@@ -3,7 +3,13 @@ import { hydrate, prerender as ssr } from "preact-iso";
 import "./styles/main.scss";
 
 export function App() {
-	return <div></div>;
+	return (
+		<div>
+			<div class="color-prim">a</div>
+			<div class="color-second">b</div>
+			<div class="color-black">c</div>
+		</div>
+	);
 }
 
 function Resource(props) {
