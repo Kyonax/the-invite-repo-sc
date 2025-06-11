@@ -2,15 +2,19 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --host",
 		"build": "vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"fs": "^0.0.1-security",
+		"hersheytext": "^2.0.0",
+		"opentype.js": "^1.3.4",
 		"path": "^0.12.7",
 		"preact": "^10.25.3",
 		"preact-iso": "^2.9.2",
-		"preact-render-to-string": "^6.5.13"
+		"preact-render-to-string": "^6.5.13",
+		"text-to-svg": "^3.1.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.27.4",

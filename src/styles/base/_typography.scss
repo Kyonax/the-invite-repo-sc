@@ -1,0 +1,51 @@
+/**
+ * @file _typography.scss - Typography
+ *
+ * This file establishes custom typography using the "SpaceMono"
+ * font family. It defines font faces for regular, bold,
+ * italic, and bold-italic styles and sets global typography for the
+ * application, promoting readability and consistency.
+ *
+ * node.js-v20.17.0
+ *
+ * @author Cristian Moreno (Kyonax)
+ * @contact iamkyo@kyo.wtf
+ * @date 2025-06-10
+ *
+ * Code Guidelines :: @CCSv0.1
+ * More details: https://code-guidelines.cybercodesyndicate.org
+ * - Tabs only—no spaces.
+ * - Naming:
+ *   - kebab-case for classes and file names (e.g., file-example.js).
+ *   - __underscore for childs (double underscore prefix).
+ * - Meaningful Names btn-default-class over classOne.
+ *
+ * Repository-URL
+ * https://github.com/Kyonax/the-invite-sc.git
+ *
+ * @dependencies
+ * - Using "../abstracts/mixins";
+ *
+ * @usage
+ * Import this file from the base folder index as a forwarded file
+ * which is then imported into main SASS file.
+ */
+@use "../abstracts/mixins";
+
+// Define SpaceMono fonts
+@include mixins.font-face("Peristiwa", "Peristiwa", 400, normal);
+@include mixins.font-face("ClassyVogue", "ClassyVogue", 400, normal);
+@include mixins.font-face("Hamiltone", "Hamiltone", 400, normal);
+
+// Global typography settings
+html {
+    font-size: 12px;
+}
+
+body {
+    font-family: "ClassyVogue", "Roboto Mono", "Courier New", Courier, monospace;
+    font-display: swap;
+    font-size: var(--fs-300);
+    line-height: var(--fs-500);
+    letter-spacing: -0.03rem;
+}

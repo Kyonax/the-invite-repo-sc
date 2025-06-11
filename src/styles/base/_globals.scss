@@ -1,15 +1,149 @@
-.color-prim {
-    background-color: #3e4b37;
+/**
+ * @file _global.scss - Global
+ *
+ * This file defines global styles, including layout, typography, and
+ * accessibility. It also sets default scrollbar styles and applies
+ * variables from `_variables.scss` for consistent design throughout the app.
+ *
+ * node.js-v20.17.0
+ *
+ * @author Cristian Moreno (Kyonax)
+ * @contact iamkyo@kyo.wtf
+ * @date 2025-06-10
+ *
+ * Code Guidelines :: @CCSv0.1
+ * More details: https://code-guidelines.cybercodesyndicate.org
+ * - Tabs only—no spaces.
+ * - Naming:
+ *   - kebab-case for classes and file names (e.g., file-example.js).
+ *   - __underscore for childs (double underscore prefix).
+ * - Meaningful Names btn-default-class over classOne.
+ *
+ * Repository-URL
+ * https://github.com/Kyonax/the-invite-sc.git
+ *
+ * @dependencies
+ * - Using * from "../abstracts/variables"
+ */
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+/* Target all scrollable content (like body or main container) */
+* {
+    scrollbar-width: thin; // For Firefox
+    scrollbar-color: var(--clr-cloud-50) transparent; // Firefox thumb & track colors
 }
 
-.color-second {
-    background-color: #7b5e45;
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
 }
 
-.color-black {
-    background-color: #131408;
+*::-webkit-scrollbar-track {
+    background: transparent;
 }
 
+*::-webkit-scrollbar-thumb {
+    background-color: var(--clr-cloud-50);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #f1f1f1;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #fff transparent;
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+// Hide scrollbar on mobile (up to 768px width)
+@media (max-width: 882px) {
+    * {
+        // For Firefox
+        scrollbar-width: none;
+
+        // For WebKit-based browsers (Chrome, Safari, Edge)
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+/**
+ * Body Styles
+ *
+ * @description
+ * Sets the default background and text colors to ensure high contrast
+ * for readability and accessibility.
+ */
 body {
-    background-color: #aaadb3;
+    background-color: var(--clr-cloud-50);
+    color: var(--clr-secondary-100);
+}
+
+#root {
+    align-items: center;
+    display: grid;
+    justify-items: center;
+    position: relative;
+}
+
+.loader {
+    align-items: center;
+    display: grid;
+    height: calc(var(--vh, 1vh) * 98);
+    justify-items: center;
+    max-width: 1440px;
+    position: relative;
+    width: 100%;
+
+    &__container {
+        align-items: center;
+        display: grid;
+        justify-items: center;
+        position: relative;
+        width: 70%;
+
+        @include mixins.max-media-query(sm) {
+            width: 90%;
+        }
+
+        p {
+            opacity: 0;
+            text-align: center;
+            font-size: var(--fs-400);
+            color: var(--clr-darker-50);
+            animation: reveal 1.6s ease-in 3s forwards;
+        }
+
+        h1 {
+            position: absolute;
+            top: 0rem;
+        }
+    }
+}
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+    }
+
+    from {
+        opacity: 0;
+    }
 }

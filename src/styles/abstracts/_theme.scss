@@ -1,0 +1,92 @@
+/**
+ * @file _theme.scss - Theme Variables
+ *
+ * This SASS file defines theme-related CSS custom
+ * properties (variables) within the :root selector
+ * for use throughout the website.
+ *
+ * Also everything regarding Custom Styles to
+ * mantain a consistent style across the website.
+ *
+ * node.js-v20.17.0
+ *
+ * @author Cristian Moreno (Kyonax)
+ * @contact iamkyo@kyo.wtf
+ * @date 2025-06-10
+ *
+ * Code Guidelines :: @CCSv0.1
+ * More details: https://code-guidelines.cybercodesyndicate.org
+ * - Tabs only—no spaces.
+ * - Naming:
+ *   - kebab-case for classes and file names (e.g., file-example.js).
+ *   - __underscore for childs (double underscore prefix).
+ * - Meaningful Names btn-default-class over classOne.
+ *
+ * Repository-URL
+ * https://github.com/Kyonax/the-invite-sc.git
+ *
+ * @dependencies
+ * - Using * from "variables"
+ * - Using * from "mixins"
+ *
+ * @usage
+ * UsageOfThisFile
+ */
+@use "variables" as *;
+@use "mixins" as *;
+
+/**
+ * Root Element
+ *
+ * The root element serves to establish styling variables used across the SASS structure and project. It defines:
+ * - Color variables following the naming convention --clr-[color]-[shade] for each color and shade provided by the $colors map.
+ * - Typography variables using --fs-[size] format from the $typo-scale map for different screen sizes:
+ *   - 'small' sets the base font sizes.
+ *   - 'medium' uses @include min-media-query(md) to adjust font sizes when the screen width reaches a minimum size defined as md.
+ *
+ * Usage Example:
+ * The CSS variables can be used as follows:
+ * ```css
+ * h1 {
+ *   font-size: var(--fs-large);
+ *   color: var(--clr-primary-light);
+ * }
+ * ```
+ */
+:root {
+    /* Color variable creation for each color and its shades */
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --clr-#{$color}-#{$shade}: #{$value};
+        }
+    }
+
+    /* Typography variable creation based on screen size */
+    @each $screen-size, $font-size in $typo-scale {
+        @if $screen-size == small {
+            /* Define base font sizes */
+            @each $size, $value in $font-size {
+                --fs-#{$size}: #{$value};
+            }
+        } @else if $screen-size == large {
+            /* Adjust font sizes for larger screens */
+            @include min-media-query(md) {
+                @each $size, $value in $font-size {
+                    --fs-#{$size}: #{$value};
+                }
+            }
+        }
+    }
+}
+
+// SCSS file (e.g., main.scss or base/_global.scss)
+
+::selection {
+    background-color: var(--clr-secondary-200);
+    color: var(--clr-secondary-500);
+}
+
+::-moz-selection {
+    background-color: var(--clr-secondary-200);
+    color: var(--clr-secondary-500);
+}

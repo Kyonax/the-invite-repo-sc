@@ -1,12 +1,8 @@
 /**
- * @file _index.scss - base Index
+ * @file _index.scss - Abstracts Index
  *
- * This file acts as the primary entry point for applying
- * foundational styles across the application.
- *
- * It imports and distributes essential typography and global
- * style settings, making these base styles accessible for use in
- * other components of the application.
+ * This Index file manages all SASS files in its directory by forwarding them here.
+ * The goal is to simplify styling by referencing the folder alone.
  *
  * node.js-v20.17.0
  *
@@ -26,10 +22,10 @@
  * https://github.com/Kyonax/the-invite-sc.git
  *
  * @dependencies
- * - Forwarding "globals";
+ * - Forwarding "theme";
  *
  * @usage
- * UsageOfThisFile
+ * Import this file into the main stylesheet (e.g., `main.scss`) to ensure
+ * the Theme is applied successfully in to the website.
  */
-@forward "_globals";
-@forward "_typography";
+@forward "theme";

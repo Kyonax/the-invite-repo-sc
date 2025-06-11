@@ -4,7 +4,7 @@ import babel from "@rollup/plugin-babel";
 import path from "path";
 
 export default defineConfig({
-    base: "/the-invite-sc/",
+    base: "/the-invite-sc",
     plugins: [
         preact({
             prerender: {

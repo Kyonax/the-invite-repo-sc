@@ -28,4 +28,6 @@
  * This file must be imported into the main entry point of the application
  * (e.g., `index.tsx`) to apply global styles across the project.
  */
+@use "abstracts";
 @use "base";
+/* src/styles/handwrite.scss */
