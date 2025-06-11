@@ -1,0 +1,34 @@
+name: the-invite-sc - Build and Deploy to build-dev
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Push
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Node Dependencies
+        run: npm install
+
+      - name: Build App
+        run: npm run build
+
+      - name: Push to build-dev
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: build-dev
+          FOLDER: dist
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Build in Dev Environment: ({sha}) {msg}"

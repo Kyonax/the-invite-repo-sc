@@ -1,0 +1,34 @@
+/**
+ * @file _index.scss - base Index
+ *
+ * This file acts as the primary entry point for applying
+ * foundational styles across the application.
+ *
+ * It imports and distributes essential typography and global
+ * style settings, making these base styles accessible for use in
+ * other components of the application.
+ *
+ * node.js-v20.17.0
+ *
+ * @author Cristian Moreno (Kyonax)
+ * @contact iamkyo@kyo.wtf
+ * @date 2025-06-10
+ *
+ * Code Guidelines :: @CCSv0.1
+ * More details: https://code-guidelines.cybercodesyndicate.org
+ * - Tabs only—no spaces.
+ * - Naming:
+ *   - kebab-case for classes and file names (e.g., file-example.js).
+ *   - __underscore for childs (double underscore prefix).
+ * - Meaningful Names btn-default-class over classOne.
+ *
+ * Repository-URL
+ * https://github.com/Kyonax/the-invite-sc.git
+ *
+ * @dependencies
+ * - Forwarding "globals";
+ *
+ * @usage
+ * UsageOfThisFile
+ */
+@forward "_globals";
