@@ -45,5 +45,17 @@
 	<body>
 		<div id="app"></div>
 		<script prerender type="module" src="/src/index.tsx"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const button = document.querySelector("img"); // Assuming you have a button element
+				const seal = document.querySelector(".main");
+
+				if (button && seal) {
+					button.addEventListener("click", function () {
+						seal.classList.toggle("top");
+					});
+				}
+			});
+		</script>
 	</body>
 </html>

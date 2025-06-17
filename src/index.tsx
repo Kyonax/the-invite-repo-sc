@@ -23,15 +23,15 @@ export function App({ data }) {
 						Hemos reservado {data?.reserved || FALLBACK_RESERVED} lugar(es) en
 						su honor
 					</p>
-				</div>
-			</section>
-			<section class="main">
-				<div class="main__seal">
-					<span>Click Aqui!</span>
-					<img src={seal_sc} alt="The Invite Seal - S&C" />
+					<div class="seal">
+						<img src={seal_sc} alt="The Invite Seal - S&C" />
+					</div>
 				</div>
 
-				<h1>This is the first section,</h1>
+				<div class="double_border"></div>
+			</section>
+			<section class="main">
+				<span>Section #1</span>
 			</section>
 		</div>
 	);

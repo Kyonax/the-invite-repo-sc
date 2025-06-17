@@ -92,7 +92,8 @@ body::-webkit-scrollbar {
  * for readability and accessibility.
  */
 body {
-    background-color: var(--clr-cloud-50);
+    // background-color: var(--clr-cloud-50);
+    background-color: var(--clr-cream-brown-50);
     color: var(--clr-secondary-100);
 }
 
@@ -102,11 +103,15 @@ body {
     position: relative;
     height: calc(var(--vh, 1vh) * 96);
     overflow: hidden;
+
+    @include mixins.max-media-query(sm) {
+        height: calc(var(--vh, 1vh) * 91);
+    }
 }
 
 .loader {
     margin-top: 3.5rem;
-    border: 1px solid var(--clr-cloud-100);
+    border: 1px solid var(--clr-cream-brown-100);
     align-items: center;
     display: grid;
     height: calc(var(--vh, 1vh) * 85);
@@ -115,6 +120,11 @@ body {
     position: absolute;
     top: 0rem;
     width: 100%;
+
+    @include mixins.max-media-query(sm) {
+        margin-top: 12rem;
+        height: calc(var(--vh, 1vh) * 45);
+    }
 
     &__container {
         align-items: center;
@@ -134,7 +144,65 @@ body {
             font-size: var(--fs-400);
             color: var(--clr-darker-50);
             animation: reveal 1.6s ease-in 3s forwards;
+
+            @include mixins.max-media-query(sm) {
+                font-size: var(--fs-200);
+            }
         }
+
+        .seal {
+            width: 100%;
+            justify-content: center;
+            display: grid;
+            position: absolute;
+            bottom: -18rem;
+            animation: my-bounce 12s infinite; // Adjust time as needed
+
+            @include mixins.max-media-query(sm) {
+                bottom: -8rem;
+            }
+
+            img {
+                opacity: 0;
+                cursor: pointer;
+                width: 120px;
+                animation: reveal 1.6s ease-in 4s forwards;
+                filter: drop-shadow(-4px 6px 4px rgba(0, 0, 0, 0.2));
+
+                @include mixins.max-media-query(sm) {
+                    width: 60px;
+                }
+            }
+        }
+
+        @keyframes my-bounce {
+            0%,
+            80%,
+            100% {
+                transform: translateY(-1rem);
+                animation-timing-function: ease-in;
+            }
+            84% {
+                transform: translateY(-0.8rem); // Strong downward motion
+                animation-timing-function: ease-in-out;
+            }
+            89% {
+                transform: translateY(-1.2rem); // Strong downward motion
+                animation-timing-function: ease-in-out;
+            }
+            95% {
+                transform: translateY(-0.4rem); // Strong upward rebound
+                animation-timing-function: ease-in;
+            }
+        }
+    }
+
+    .double_border {
+        position: absolute;
+        width: 97.25%;
+        height: 95.75%;
+        border: 0.25px solid var(--clr-cream-brown-100);
+        z-index: -1;
     }
 }
 
@@ -145,42 +213,12 @@ body {
     justify-content: center;
     width: 100%;
     transform: translateY(calc(var(--vh, 1vh) * 95));
-    animation: reveal 1.6s ease-in 3.5s forwards;
+    background-color: var(--clr-cream-brown-100);
+    transition: all 0.5s ease-out;
 
-    &__seal {
-        width: 100%;
-        justify-content: center;
-        display: grid;
-        position: absolute;
-        top: 0rem;
-        transform: translateY(-12rem);
-        animation: my-bounce 12s infinite; // Adjust time as needed
-
-        img {
-            cursor: pointer;
-            width: 100px;
-        }
-    }
-
-    @keyframes my-bounce {
-        0%,
-        80%,
-        100% {
-            transform: translateY(-8rem);
-            animation-timing-function: ease-in;
-        }
-        84% {
-            transform: translateY(-7.6rem); // Strong downward motion
-            animation-timing-function: ease-in-out;
-        }
-        89% {
-            transform: translateY(-10.2rem); // Strong downward motion
-            animation-timing-function: ease-in-out;
-        }
-        95% {
-            transform: translateY(-7.2rem); // Strong upward rebound
-            animation-timing-function: ease-in;
-        }
+    &.top {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 }
 
