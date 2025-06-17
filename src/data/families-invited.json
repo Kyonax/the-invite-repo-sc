@@ -1,9 +1,18 @@
 {
-  "fam001": { "text": "Paula & Cristian", "reserved": 2 },
-  "fam002": { "text": "Dante Moreno Cruz", "reserved": 1 },
-  "fam003": {
-    "text": "La Familia Con El Nombre Mas Largo de Todos",
-    "reserved": 10
-  },
-  "fam004": { "text": "Familia Moreno Cruz", "reserved": 3 }
+  "fam001": { "text": "Familia Galvis Gonzales", "reserved": 2 },
+  "fam002": { "text": "Familia Ayala Galán", "reserved": 2 },
+  "fam003": { "text": "Familia Lara Carrillo", "reserved": 2 },
+  "fam004": { "text": "Miguel Angel Uribe", "reserved": 1 },
+  "fam005": { "text": "Breyner Cortes Delvasto", "reserved": 1 },
+  "fam006": { "text": "Familia Rusinque Londoño", "reserved": 3 },
+  "fam007": { "text": "Claudia Patricia Restrepo Bolivar", "reserved": 2 },
+  "fam008": { "text": "Familia Melo Lopez", "reserved": 2 },
+  "fam009": { "text": "Familia Mendez Caro", "reserved": 2 },
+  "fam010": { "text": "Concepcion Páez", "reserved": 1 },
+  "fam011": { "text": "Familia Cuadros Ortiz", "reserved": 2 },
+  "fam012": { "text": "Familia Paez Acevedo", "reserved": 2 },
+  "fam013": { "text": "Familia Solorsano Ortegon", "reserved": 2 },
+  "fam014": { "text": "María Lucía Quintero de Páez", "reserved": 1 },
+  "fam015": { "text": "Jenny Lessette Paez Pira", "reserved": 1 },
+  "fam016": { "text": "Familia Pavón Eraso", "reserved": 2 }
 }
