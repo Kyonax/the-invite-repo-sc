@@ -13,7 +13,9 @@ export function App({ data }) {
 	return (
 		<div id="root">
 			<section class="loader">
+				<div class="loader__texture"></div>
 				<div class="loader__container">
+					<div class="container-triangle"></div>
 					<Handwritten
 						text={data?.text || FALLBACK_TEXT}
 						fontSize={100}
@@ -23,11 +25,12 @@ export function App({ data }) {
 						Hemos reservado {data?.reserved || FALLBACK_RESERVED} lugar(es) en
 						su honor
 					</p>
-					<div class="seal">
-						<img src={seal_sc} alt="The Invite Seal - S&C" />
-					</div>
 				</div>
 
+				<div class="seal">
+					<div class="seal__triangle"></div>
+					<img src={seal_sc} alt="The Invite Seal - S&C" />
+				</div>
 				<div class="double_border"></div>
 			</section>
 			<section class="main">
