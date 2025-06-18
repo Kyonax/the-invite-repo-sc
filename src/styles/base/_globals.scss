@@ -110,7 +110,7 @@ body {
 }
 
 .loader {
-    background-color: var(--clr-primary-100);
+    background-color: var(--clr-primary-70);
     margin-top: 3.5rem;
     border: 1px solid var(--clr-cream-brown-100);
     align-items: center;
@@ -239,7 +239,7 @@ body {
         width: 100%;
         aspect-ratio: 2 / 1; // Makes a triangle
         clip-path: polygon(50% 60%, 100% 0%, 0% 0%);
-        background-color: var(--clr-primary-100);
+        background-color: var(--clr-primary-70);
         z-index: 1;
         pointer-events: none;
     }
@@ -248,8 +248,8 @@ body {
         content: "";
         position: absolute;
         top: 0rem;
-        left: -9%; // widen horizontally
-        width: 118%; // expand width to spread shadow
+        left: -11.2%; // widen horizontally
+        width: 122%; // expand width to spread shadow
         aspect-ratio: 2 / 1;
         background: conic-gradient(
             rgba(0, 0, 0, 0.9),
@@ -287,7 +287,7 @@ body {
         background-position: center center;
         background-blend-mode: overlay;
         image-rendering: crisp-edges;
-        opacity: 0.7;
+        opacity: 1;
         mix-blend-mode: multiply;
         pointer-events: none;
 
@@ -301,7 +301,7 @@ body {
                 var(--clr-gold-400),
                 transparent 80%
             );
-            opacity: 0.7;
+            opacity: 0.5;
             pointer-events: none;
             z-index: 1; // Must be over texture, but under content
             mix-blend-mode: multiply;

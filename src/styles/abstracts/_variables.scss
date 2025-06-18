@@ -50,7 +50,7 @@ $breakpoints: (
     lg: 82.667em,
     // Large Devices (Desktops, 992px and up)
     xl: 100em
-        // Extra Large Devices (Large Desktops, 1200px and up),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        // Extra Large Devices (Large Desktops, 1200px and up),,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 );
 
 /**
@@ -62,6 +62,7 @@ $breakpoints: (
 $colors: (
     primary: (
         50: hsl(91, 17%, 78%),
+        70: hsl(91, 17%, 42%),
         100: hsl(91, 17%, 32%),
         // Original Color rgba(78, 94, 67, 255)
         200: hsl(91, 17%, 39%),
