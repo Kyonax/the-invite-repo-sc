@@ -124,8 +124,8 @@ body {
     overflow: hidden;
 
     @include mixins.max-media-query(sm) {
-        margin-top: 12rem;
-        height: calc(var(--vh, 1vh) * 45);
+        margin-top: 50%;
+        height: calc(var(--vh, 1vh) * 36);
     }
 
     &__container {
@@ -222,6 +222,7 @@ body {
             animation-timing-function: ease-in;
         }
     }
+
     .double_border {
         position: absolute;
         width: 97.25%;
@@ -258,6 +259,17 @@ body {
         );
         z-index: 0;
         pointer-events: none;
+    }
+
+    @include mixins.max-media-query(sm) {
+        &::before {
+            clip-path: polygon(50% 70%, 100% 0%, 0% 0%);
+        }
+
+        &::after {
+            left: -20%; // widen horizontally
+            width: 140%; // expand width to spread shadow
+        }
     }
 
     &__texture {
