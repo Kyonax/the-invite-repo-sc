@@ -195,7 +195,7 @@ body {
 
             @include mixins.max-media-query(sm) {
                 filter: drop-shadow(-4px 3px 4px rgba(0, 0, 0, 0.2));
-                margin-top: -3rem;
+                margin-top: -2rem;
                 left: calc(50% - 30px);
                 width: 60px;
             }
