@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
 import babel from "@rollup/plugin-babel";
 import path from "path";
+import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
     base: "/the-invite-sc",
@@ -17,6 +18,7 @@ export default defineConfig({
             extensions: [".js", ".jsx", ".ts", ".tsx"],
             exclude: /node_modules/,
         }),
+        imagetools(),
     ],
     css: {
         preprocessorOptions: {
