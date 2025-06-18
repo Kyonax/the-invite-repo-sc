@@ -112,7 +112,6 @@ body {
 .loader {
     background-color: var(--clr-primary-70);
     margin-top: 3.5rem;
-    border: 1px solid var(--clr-cream-brown-100);
     align-items: center;
     display: grid;
     height: calc(var(--vh, 1vh) * 85);
@@ -231,6 +230,16 @@ body {
         z-index: 0;
     }
 
+    .deep_border {
+        position: absolute;
+        width: 97.1%;
+        height: 95.5%;
+        border: 0.25px solid var(--clr-gold-900);
+        z-index: 0;
+        opacity: 0.4;
+        mix-blend-mode: multiply;
+    }
+
     &::before {
         content: "";
         position: absolute;
@@ -248,14 +257,14 @@ body {
         content: "";
         position: absolute;
         top: 0rem;
-        left: -11.2%; // widen horizontally
-        width: 122%; // expand width to spread shadow
+        left: -12.5%; // widen horizontally
+        width: 125%; // expand width to spread shadow
         aspect-ratio: 2 / 1;
         background: conic-gradient(
-            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 1),
             transparent 75deg,
             transparent 290deg,
-            rgba(0, 0, 0, 0.9)
+            rgba(0, 0, 0, 1)
         );
         z-index: 0;
         pointer-events: none;
@@ -276,7 +285,7 @@ body {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background-image: url("@/assets/rough-paper.jpg"),
+        background-image: url("@/assets/noise-paper.jpg"),
             linear-gradient(
                 145deg,
                 rgba(255, 255, 255, 0.04),
@@ -305,6 +314,78 @@ body {
             pointer-events: none;
             z-index: 1; // Must be over texture, but under content
             mix-blend-mode: multiply;
+        }
+    }
+
+    &__texture-second {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-image: url("@/assets/rough-paper.jpg"),
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.04),
+                rgba(0, 0, 0, 0.06)
+            );
+        background-size: cover; // or "100% 100%" if exact stretching is preferred
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-blend-mode: overlay;
+        image-rendering: crisp-edges;
+        opacity: 1;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -1rem;
+            inset: 0;
+            background: radial-gradient(
+                circle at 110% 150%,
+                var(--clr-gold-900),
+                transparent 80%
+            );
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1; // Must be over texture, but under content
+            mix-blend-mode: multiply;
+        }
+    }
+
+    &__light {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-image: url("@/assets/noise-paper.jpg"),
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.04),
+                rgba(0, 0, 0, 0.06)
+            );
+        background-size: cover; // or "100% 100%" if exact stretching is preferred
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-blend-mode: overlay;
+        image-rendering: crisp-edges;
+        opacity: 1;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -1rem;
+            inset: 0;
+            background: radial-gradient(
+                circle at 50% 50%,
+                white,
+                transparent 60%
+            );
+            opacity: 1;
+            pointer-events: none;
+            z-index: 1; // Must be over texture, but under content
+            mix-blend-mode: lighten;
         }
     }
 }

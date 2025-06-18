@@ -14,6 +14,8 @@ export function App({ data }) {
 		<div id="root">
 			<section class="loader">
 				<div class="loader__texture"></div>
+				<div class="loader__texture-second"></div>
+				<div class="loader__light"></div>
 				<div class="loader__container">
 					<div class="container-triangle"></div>
 					<Handwritten
@@ -32,6 +34,7 @@ export function App({ data }) {
 					<img src={seal_sc} alt="The Invite Seal - S&C" />
 				</div>
 				<div class="double_border"></div>
+				<div class="deep_border"></div>
 			</section>
 			<section class="main">
 				<span>Section #1</span>
