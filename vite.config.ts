@@ -5,29 +5,29 @@ import path from "path";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
-    base: "/the-invite-sc",
-    plugins: [
-        preact({
-            prerender: {
-                enabled: true,
-                renderTarget: "#app",
-            },
-        }),
-        babel({
-            babelHelpers: "bundled",
-            extensions: [".js", ".jsx", ".ts", ".tsx"],
-            exclude: /node_modules/,
-        }),
-        imagetools(),
-    ],
-    css: {
-        preprocessorOptions: {
-            scss: {},
-        },
+  base: "/the-invite-sc",
+  plugins: [
+    preact({
+      prerender: {
+        enabled: true,
+        renderTarget: "#app",
+      },
+    }),
+    babel({
+      babelHelpers: "bundled",
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      exclude: /node_modules/,
+    }),
+    imagetools(),
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {},
     },
-    resolve: {
-        alias: {
-            "@": path.resolve(__dirname, "./src"),
-        },
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
     },
+  },
 });

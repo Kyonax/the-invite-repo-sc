@@ -143,7 +143,7 @@ body {
             opacity: 0;
             text-align: center;
             font-size: var(--fs-400);
-            color: var(--clr-gold-900);
+            color: var(--clr-real-gold-900);
             animation: reveal 1.6s ease-in 3s forwards;
 
             @include mixins.max-media-query(sm) {
@@ -234,7 +234,7 @@ body {
         position: absolute;
         width: 97.1%;
         height: 95.5%;
-        border: 0.25px solid var(--clr-gold-900);
+        border: 0.25px solid var(--clr-real-gold-900);
         z-index: 0;
         opacity: 0.4;
         mix-blend-mode: multiply;
@@ -285,7 +285,7 @@ body {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background-image: url("@/assets/app/noise_paper.webp"),
+        background-image: var(--img-noise_paper),
             linear-gradient(
                 145deg,
                 rgba(255, 255, 255, 0.04),
@@ -307,7 +307,7 @@ body {
             inset: 0;
             background: radial-gradient(
                 circle at 41% -20%,
-                var(--clr-gold-400),
+                var(--clr-real-gold-400),
                 transparent 80%
             );
             opacity: 0.5;
@@ -321,7 +321,7 @@ body {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background-image: url("@/assets/app/rough_paper.webp"),
+        background-image: var(--img-rough_paper),
             linear-gradient(
                 145deg,
                 rgba(255, 255, 255, 0.04),
@@ -357,7 +357,7 @@ body {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background-image: url("@/assets/app/noise_paper.webp"),
+        background-image: var(--img-noise_paper),
             linear-gradient(
                 145deg,
                 rgba(255, 255, 255, 0.04),
