@@ -29,6 +29,7 @@ const getBestVariant = (variants: ImageVariant[]): ImageVariant => {
 export const preloadImages = async (
   imageIds: string[],
   cache: ImageCache = GLOBAL_IMAGE_CACHE, // Default to global cache
+  onProgress?: (loaded: number, total: number) => void, // Add progress callback
 ): Promise<void> => {
   if (!imageIds.length) return;
 
@@ -63,9 +64,18 @@ export const preloadImages = async (
     }
   });
 
+  // Track loading progress
+  let loadedCount = 0;
+  const totalCount = imageIds.length;
+
   // Preload only requested images
-  for (const id of imageIds) {
-    if (!variants[id] || cache.urls[id]) continue; // Skip if already cached
+  const imagePromises = imageIds.map((id) => {
+    if (!variants[id] || cache.urls[id]) {
+      loadedCount++;
+      if (onProgress) onProgress(loadedCount, totalCount);
+      return Promise.resolve(); // Skip if already cached or not found
+    }
+
     const variantList = variants[id];
     const bestVariant = getBestVariant(variantList);
 
@@ -73,40 +83,56 @@ export const preloadImages = async (
     cache.urls[id] = bestVariant.src;
 
     // Preload image
-    const img = new Image();
-    img.src = bestVariant.src;
-    await new Promise((resolve) => (img.onload = resolve));
+    return new Promise<void>((resolve) => {
+      const img = new Image();
+      img.src = bestVariant.src;
+      img.onload = () => {
+        loadedCount++;
+        if (onProgress) onProgress(loadedCount, totalCount);
 
-    // Build and cache the <picture> element
-    const widthVariants = variantList.filter((v) => v.width > 0);
-    const fallbackSrc = widthVariants.length
-      ? widthVariants[widthVariants.length - 1].src
-      : bestVariant.src;
+        // Build and cache the <picture> element
+        const widthVariants = variantList.filter((v) => v.width > 0);
+        const fallbackSrc = widthVariants.length
+          ? widthVariants[widthVariants.length - 1].src
+          : bestVariant.src;
 
-    cache.elements[id] = (
-      <picture id={id}>
-        {widthVariants.length > 0 && (
-          <>
-            <source
-              type="image/webp"
-              srcSet={widthVariants
-                .map((v) => `${v.src.replace(/\.\w+$/, ".webp")} ${v.width}w`)
-                .join(", ")}
-              sizes="(max-width: 800px) 100vw, 50vw"
-            />
-            <source
-              type={getMimeType(fallbackSrc)}
-              srcSet={widthVariants
-                .map((v) => `${v.src} ${v.width}w`)
-                .join(", ")}
-              sizes="(max-width: 800px) 100vw, 50vw"
-            />
-          </>
-        )}
-        <img src={fallbackSrc} alt={id} loading="eager" decoding="sync" />
-      </picture>
-    );
-  }
+        cache.elements[id] = (
+          <picture id={id}>
+            {widthVariants.length > 0 && (
+              <>
+                <source
+                  type="image/webp"
+                  srcSet={widthVariants
+                    .map(
+                      (v) => `${v.src.replace(/\.\w+$/, ".webp")} ${v.width}w`,
+                    )
+                    .join(", ")}
+                  sizes="(max-width: 800px) 100vw, 50vw"
+                />
+                <source
+                  type={getMimeType(fallbackSrc)}
+                  srcSet={widthVariants
+                    .map((v) => `${v.src} ${v.width}w`)
+                    .join(", ")}
+                  sizes="(max-width: 800px) 100vw, 50vw"
+                />
+              </>
+            )}
+            <img src={fallbackSrc} alt={id} loading="eager" decoding="sync" />
+          </picture>
+        );
+        resolve();
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${id}`);
+        loadedCount++;
+        if (onProgress) onProgress(loadedCount, totalCount);
+        resolve(); // Resolve even on error to continue
+      };
+    });
+  });
+
+  await Promise.all(imagePromises);
 };
 
 const getMimeType = (path: string): string => {

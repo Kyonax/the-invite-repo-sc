@@ -57,7 +57,8 @@
 
 *,
 ::before,
-::after {
+::af          // Update progress percentage
+ter {
   box-sizing: border-box;
 }
 
@@ -71,7 +72,7 @@ body::-webkit-scrollbar {
   width: 8px;
 }
 
-// Hide scrollbar on mobile (up to 768px width)
+// Hide scrollbar on mobile (up to 768pxdth)
 @media (max-width: 882px) {
   * {
     // For Firefox
@@ -135,6 +136,60 @@ body {
 
     p {
       padding: 0.75rem 1rem;
+    }
+  }
+}
+
+.preloader-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--clr-cream-brown-50);
+  z-index: 9999;
+  font-family: inherit;
+  color: var(--clr-cream-brown-500); // Adjust text color as needed
+
+  p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .preloader-animation {
+    width: 200px;
+    height: 10px;
+    background-color: #ddd; // Background of the loading bar track
+    border-radius: 5px;
+    position: relative;
+
+    .loading-bar {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      .progress-fill {
+        height: 100%;
+        background-color: var(
+          --clr-cream-brown-200
+        ); // Color of the filling bar
+        transition: width 0.3s ease-in-out; // Smooth transition for width changes
+        border-radius: 5px;
+      }
+
+      .progress-dot {
+        color: var(--clr-cream-brown-200);
+        width: 40px;
+        position: absolute;
+        top: -49px; // Center the dot vertically on the bar
+        left: 3px; // Base position
+        transition: transform 0.3s ease-in-out; // Smooth transition for position changes
+      }
     }
   }
 }
