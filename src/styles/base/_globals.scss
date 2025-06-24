@@ -124,7 +124,7 @@ body {
 
     @include mixins.max-media-query(sm) {
         margin-top: 50%;
-        height: calc(var(--vh, 1vh) * 36);
+        height: calc(var(--vh, 1vh) * 38);
     }
 
     &__container {
@@ -184,11 +184,11 @@ body {
         }
 
         img {
-            margin-top: -7.5rem;
+            margin-top: -10rem;
             position: absolute;
-            left: calc(50% - 60px);
+            left: calc(50% - 70px);
             cursor: pointer;
-            width: 120px;
+            width: 150px;
             filter: drop-shadow(-4px 6px 4px rgba(0, 0, 0, 0.2));
             animation: my-bounce 12s infinite; // Adjust time as needed
 
@@ -226,7 +226,7 @@ body {
         position: absolute;
         width: 97.25%;
         height: 95.75%;
-        border: 0.25px solid var(--clr-cream-brown-100);
+        border: 0.25px solid var(--clr-cream-brown-50);
         z-index: 0;
     }
 
@@ -236,8 +236,34 @@ body {
         height: 95.5%;
         border: 0.25px solid var(--clr-real-gold-900);
         z-index: 0;
-        opacity: 0.4;
+        opacity: 0.6;
         mix-blend-mode: multiply;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -2rem;
+            left: -17.5%; // widen horizontally
+            width: 135%; // expand width to spread shadow
+            aspect-ratio: 2 / 1;
+            background: conic-gradient(
+                rgba(0, 0, 0, 0.4),
+                transparent 70deg,
+                transparent 278deg,
+                rgba(0, 0, 0, 1)
+            );
+            z-index: 0;
+            pointer-events: none;
+        }
+
+
+        @include mixins.max-media-query(sm) {
+            &::before {
+            left: -32.5%; // widen horizontally
+            width: 165%; // expand width to spread shadow
+                top: -2.5rem;
+            }
+        }
     }
 
     &::before {
@@ -248,36 +274,42 @@ body {
         width: 100%;
         aspect-ratio: 2 / 1; // Makes a triangle
         clip-path: polygon(50% 60%, 100% 0%, 0% 0%);
-        background-color: var(--clr-primary-70);
+        background-color: var(--clr-primary-60);
         z-index: 1;
         pointer-events: none;
+    }
+
+    .handwrite-svg {
+        z-index: 1;
+        mix-blend-mode: screen;
+        opacity: 0.8;
     }
 
     &::after {
         content: "";
         position: absolute;
-        top: 0rem;
-        left: -12.5%; // widen horizontally
-        width: 125%; // expand width to spread shadow
-        aspect-ratio: 2 / 1;
-        background: conic-gradient(
-            rgba(0, 0, 0, 1),
-            transparent 75deg,
-            transparent 290deg,
-            rgba(0, 0, 0, 1)
-        );
+        top: 0;
+        left: 0;
+        width: 100%;
+        aspect-ratio: 2 / 1; // Makes a triangle
+        clip-path: polygon(50% 60.3%, 100% 0%, 0% 0.6%);
+        background-color: var(--clr-primary-100);
         z-index: 0;
         pointer-events: none;
+        mix-blend-mode: darken;
+        opacity: 0.6;
     }
 
     @include mixins.max-media-query(sm) {
-        &::before {
+        &::before, &:after {
             clip-path: polygon(50% 70%, 100% 0%, 0% 0%);
         }
 
         &::after {
-            left: -20%; // widen horizontally
-            width: 140%; // expand width to spread shadow
+            opacity: 0.8;
+            clip-path: polygon(50% 70.4%, 100% 0%, 0% 0.6%);
+            // left: -20%; // widen horizontally
+            // width: 140%; // expand width to spread shadow
         }
     }
 
@@ -285,18 +317,13 @@ body {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background-image: var(--img-noise_paper),
-            linear-gradient(
-                145deg,
-                rgba(255, 255, 255, 0.04),
-                rgba(0, 0, 0, 0.06)
-            );
-        background-size: cover; // or "100% 100%" if exact stretching is preferred
-        background-repeat: no-repeat;
+        background-image: var(--img-noise_paper);
+        background-size: 30%;
+        background-repeat: repeat;
         background-position: center center;
-        background-blend-mode: overlay;
-        image-rendering: crisp-edges;
-        opacity: 1;
+        background-blend-mode: normal;
+        image-rendering: auto;
+        opacity: 0.67;
         mix-blend-mode: multiply;
         pointer-events: none;
 
@@ -305,15 +332,11 @@ body {
             position: absolute;
             top: -1rem;
             inset: 0;
-            background: radial-gradient(
-                circle at 41% -20%,
-                var(--clr-real-gold-400),
-                transparent 80%
-            );
-            opacity: 0.5;
+            background: var(--clr-primary-70);
+            opacity: 1;
             pointer-events: none;
             z-index: 1; // Must be over texture, but under content
-            mix-blend-mode: multiply;
+            mix-blend-mode: hard-light;
         }
     }
 
@@ -321,55 +344,14 @@ body {
         position: absolute;
         inset: 0;
         z-index: 1;
-        background-image: var(--img-rough_paper),
-            linear-gradient(
-                145deg,
-                rgba(255, 255, 255, 0.04),
-                rgba(0, 0, 0, 0.06)
-            );
-        background-size: cover; // or "100% 100%" if exact stretching is preferred
-        background-repeat: no-repeat;
+        background-image: var(--img-rough_paper);
+        background-size: 30%; // or "100% 100%" if exact stretching is preferred
+        background-repeat: repeat;
         background-position: center center;
-        background-blend-mode: overlay;
-        image-rendering: crisp-edges;
+        background-blend-mode: normal;
+        image-rendering: auto;
         opacity: 1;
-        mix-blend-mode: multiply;
-        pointer-events: none;
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: -1rem;
-            inset: 0;
-            background: radial-gradient(
-                circle at 110% 150%,
-                var(--clr-gold-900),
-                transparent 80%
-            );
-            opacity: 0.4;
-            pointer-events: none;
-            z-index: 1; // Must be over texture, but under content
-            mix-blend-mode: multiply;
-        }
-    }
-
-    &__light {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background-image: var(--img-noise_paper),
-            linear-gradient(
-                145deg,
-                rgba(255, 255, 255, 0.04),
-                rgba(0, 0, 0, 0.06)
-            );
-        background-size: cover; // or "100% 100%" if exact stretching is preferred
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-blend-mode: overlay;
-        image-rendering: crisp-edges;
-        opacity: 1;
-        mix-blend-mode: multiply;
+        mix-blend-mode: color-burn;
         pointer-events: none;
 
         &::after {
@@ -379,14 +361,24 @@ body {
             inset: 0;
             background: radial-gradient(
                 circle at 50% 50%,
-                white,
-                transparent 60%
+                var(--clr-primary-50),
+                transparent 80%
             );
             opacity: 1;
             pointer-events: none;
             z-index: 1; // Must be over texture, but under content
-            mix-blend-mode: lighten;
+            mix-blend-mode: color-dodge;
         }
+    }
+
+    &__light {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background-color: var(--clr-primary-50);
+        opacity: 1;
+        mix-blend-mode: color;
+        pointer-events: none;
     }
 }
 

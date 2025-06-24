@@ -43,7 +43,7 @@
  * desktop displays.
  */
 $breakpoints: (
-    sm: 48em,
+    sm: 36em,
     // Small Devices (Landscape Phones, 576px and up)
     md: 64em,
     // Medium Devices (Tablets, 768px and up)
@@ -62,7 +62,8 @@ $breakpoints: (
 $colors: (
     primary: (
         50: hsl(91, 17%, 78%),
-        70: hsl(91, 17%, 42%),
+        60: hsl(91, 12%, 53%),
+        70: hsl(91, 12%, 52%),
         100: hsl(91, 17%, 32%),
         // Original Color rgba(78, 94, 67, 255)
         200: hsl(91, 17%, 39%),
