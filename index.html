@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es">
-	<!--
+  <!--
   _______ _    _ ______   _____ _   ___      _______ _______ ______
  |__   __| |  | |  ____| |_   _| \ | \ \    / /_   _|__   __|  ____|
 	| |  | |__| | |__      | | |  \| |\ \  / /  | |    | |  | |__
@@ -34,28 +34,16 @@
   Repository-URL:
   https://github.com/Kyonax/the-invite-sc -->
 
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="color-scheme" content="light dark" />
-		<title>The Invite - Sofía & Cristhian</title>
-	</head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>The Invite - Sofía & Cristhian</title>
+  </head>
 
-	<body>
-		<div id="app"></div>
-		<script prerender type="module" src="/src/index.tsx"></script>
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				const button = document.querySelector("img"); // Assuming you have a button element
-				const seal = document.querySelector(".main");
-
-				if (button && seal) {
-					button.addEventListener("click", function () {
-						seal.classList.toggle("top");
-					});
-				}
-			});
-		</script>
-	</body>
+  <body>
+    <div id="app"></div>
+    <script prerender type="module" src="/src/index.tsx"></script>
+  </body>
 </html>

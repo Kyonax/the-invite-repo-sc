@@ -30,58 +30,58 @@
 
 /* Target all scrollable content (like body or main container) */
 * {
-    scrollbar-width: thin; // For Firefox
-    scrollbar-color: var(--clr-cloud-50) transparent; // Firefox thumb & track colors
+  scrollbar-width: thin; // For Firefox
+  scrollbar-color: var(--clr-cloud-50) transparent; // Firefox thumb & track colors
 }
 
 /* Chrome, Edge, Safari */
 *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--clr-cloud-50);
-    border-radius: 10px;
-    border: 2px solid transparent;
-    background-clip: content-box;
+  background-color: var(--clr-cloud-50);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 *,
 ::before,
 ::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body,
 html {
-    scrollbar-width: thin;
-    scrollbar-color: #fff transparent;
+  scrollbar-width: thin;
+  scrollbar-color: #fff transparent;
 }
 
 body::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 // Hide scrollbar on mobile (up to 768px width)
 @media (max-width: 882px) {
-    * {
-        // For Firefox
-        scrollbar-width: none;
+  * {
+    // For Firefox
+    scrollbar-width: none;
 
-        // For WebKit-based browsers (Chrome, Safari, Edge)
-        &::-webkit-scrollbar {
-            display: none;
-        }
+    // For WebKit-based browsers (Chrome, Safari, Edge)
+    &::-webkit-scrollbar {
+      display: none;
     }
+  }
 }
 
 /**
@@ -92,320 +92,387 @@ body::-webkit-scrollbar {
  * for readability and accessibility.
  */
 body {
-    // background-color: var(--clr-cloud-50);
-    background-color: var(--clr-cream-brown-50);
-    color: var(--clr-secondary-100);
+  // background-color: var(--clr-cloud-50);
+  background-color: var(--clr-cream-brown-50);
+  color: var(--clr-secondary-100);
 }
 
 #root {
-    display: grid;
-    justify-items: center;
-    position: relative;
-    height: calc(var(--vh, 1vh) * 96);
-    overflow: hidden;
+  display: grid;
+  justify-items: center;
+  position: relative;
+  height: calc(var(--vh, 1vh) * 96);
+  overflow: hidden;
 
-    @include mixins.max-media-query(sm) {
-        height: calc(var(--vh, 1vh) * 91);
+  @include mixins.max-media-query(sm) {
+    height: calc(var(--vh, 1vh) * 91);
+  }
+}
+
+.card-reserved {
+  opacity: 0;
+  position: absolute;
+  bottom: 1rem;
+  right: 3rem;
+  z-index: 3;
+  color: var(--clr-primary-400);
+  background-color: var(--clr-primary-50);
+  padding: 0.2rem 0.2rem;
+  transform: translateY(3rem);
+  font-size: var(--fs-200);
+  animation: reveal 1.2s ease-in 3s forwards;
+
+  p {
+    margin: 0rem;
+    border: 1px solid var(--clr-real-gold-800);
+    padding: 1.5rem 2rem;
+  }
+
+  @include mixins.max-media-query(sm) {
+    right: 1rem;
+    bottom: 1.5rem;
+    font-size: var(--fs-100);
+
+    p {
+      padding: 0.75rem 1rem;
     }
+  }
 }
 
 .loader {
-    background-color: var(--clr-primary-70);
-    margin-top: 3.5rem;
+  background-color: var(--clr-primary-70);
+  margin-top: 3.5rem;
+  align-items: center;
+  display: grid;
+  height: calc(var(--vh, 1vh) * 85);
+  justify-items: center;
+  max-width: 1440px;
+  position: absolute;
+  top: 0rem;
+  width: 100%;
+  transition: all 0.9s ease-out;
+
+  @include mixins.max-media-query(sm) {
+    margin-top: 50%;
+    height: calc(var(--vh, 1vh) * 38);
+  }
+
+  &.hidden {
+    opacity: 0 !important;
+  }
+
+  &__container {
     align-items: center;
     display: grid;
-    height: calc(var(--vh, 1vh) * 85);
     justify-items: center;
-    max-width: 1440px;
-    position: absolute;
-    top: 0rem;
-    width: 100%;
-    overflow: hidden;
+    position: relative;
+    width: 70%;
 
     @include mixins.max-media-query(sm) {
-        margin-top: 50%;
-        height: calc(var(--vh, 1vh) * 38);
+      width: 90%;
     }
 
-    &__container {
-        align-items: center;
-        display: grid;
-        justify-items: center;
-        position: relative;
-        width: 70%;
+    p {
+      margin-top: -0.5rem;
+      opacity: 0;
+      text-align: center;
+      font-size: var(--fs-400);
+      color: var(--clr-real-gold-900);
+      animation: reveal 1.6s ease-in 3s forwards;
 
-        @include mixins.max-media-query(sm) {
-            width: 90%;
-        }
-
-        p {
-            margin-top: -0.5rem;
-            opacity: 0;
-            text-align: center;
-            font-size: var(--fs-400);
-            color: var(--clr-real-gold-900);
-            animation: reveal 1.6s ease-in 3s forwards;
-
-            @include mixins.max-media-query(sm) {
-                font-size: var(--fs-200);
-            }
-        }
-
-        .container-triangle {
-            content: "";
-            position: relative;
-            top: 0;
-            left: 0;
-            width: 100%;
-            aspect-ratio: 2.5 / 1; // Makes a triangle
-            clip-path: polygon(50% 100%, 100% 0%, 0% 0%);
-            background-color: transparent;
-            pointer-events: none;
-        }
+      @include mixins.max-media-query(sm) {
+        font-size: var(--fs-200);
+      }
     }
 
-    .seal {
+    .container-triangle {
+      content: "";
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      aspect-ratio: 2.5 / 1; // Makes a triangle
+      clip-path: polygon(50% 100%, 100% 0%, 0% 0%);
+      background-color: transparent;
+      pointer-events: none;
+    }
+  }
+
+  .seal {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    animation: my-bounce 12s infinite; // Adjust time as needed
+
+    a.circular-text {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      text-align: center;
+      transform: translate(0.15rem, -8.65rem);
+      display: block;
+      width: 200px; // Match SVG width
+      height: 200px; // Match SVG height
+      text-decoration: none;
+      color: var(--clr-primary-500);
+      animation: reveal 1.2s ease-in 4s forwards;
+
+      svg {
         display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
+        margin: 0 auto;
+      }
 
-        &__triangle {
-            content: "";
-            position: relative;
-            top: 0;
-            left: 0;
-            width: 100%;
-            aspect-ratio: 3 / 1; // Makes a triangle
-            clip-path: polygon(50% 100%, 100% 0%, 0% 0%);
-            background-color: transparent;
-            pointer-events: none;
+      @include mixins.max-media-query(sm) {
+        width: 100px;
+        height: 100px;
+        transform: translate(0rem, -2rem);
+
+        svg {
+          width: 100px;
+          height: 100px;
         }
-
-        img {
-            margin-top: -10rem;
-            position: absolute;
-            left: calc(50% - 70px);
-            cursor: pointer;
-            width: 150px;
-            filter: drop-shadow(-4px 6px 4px rgba(0, 0, 0, 0.2));
-            animation: my-bounce 12s infinite; // Adjust time as needed
-
-            @include mixins.max-media-query(sm) {
-                filter: drop-shadow(-4px 3px 4px rgba(0, 0, 0, 0.2));
-                margin-top: -2rem;
-                left: calc(50% - 30px);
-                width: 60px;
-            }
-        }
+      }
     }
 
-    @keyframes my-bounce {
-        0%,
-        80%,
-        100% {
-            transform: translateY(-1rem);
-            animation-timing-function: ease-in;
-        }
-        84% {
-            transform: translateY(-0.8rem); // Strong downward motion
-            animation-timing-function: ease-in-out;
-        }
-        89% {
-            transform: translateY(-1.2rem); // Strong downward motion
-            animation-timing-function: ease-in-out;
-        }
-        95% {
-            transform: translateY(-0.4rem); // Strong upward rebound
-            animation-timing-function: ease-in;
-        }
+    &__triangle {
+      content: "";
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      aspect-ratio: 3 / 1; // Makes a triangle
+      clip-path: polygon(50% 100%, 100% 0%, 0% 0%);
+      background-color: transparent;
+      pointer-events: none;
     }
 
-    .double_border {
-        position: absolute;
-        width: 97.25%;
-        height: 95.75%;
-        border: 0.25px solid var(--clr-cream-brown-50);
-        z-index: 0;
+    img {
+      margin-top: -8rem;
+      position: absolute;
+      left: calc(50% - 70px);
+      cursor: pointer;
+      width: 150px;
+      filter: drop-shadow(-4px 6px 4px rgba(0, 0, 0, 0.2));
+
+      @include mixins.max-media-query(sm) {
+        filter: drop-shadow(-4px 3px 4px rgba(0, 0, 0, 0.2));
+        margin-top: -1rem;
+        left: calc(50% - 30px);
+        width: 60px;
+      }
     }
+  }
 
-    .deep_border {
-        position: absolute;
-        width: 97.1%;
-        height: 95.5%;
-        border: 0.25px solid var(--clr-real-gold-900);
-        z-index: 0;
-        opacity: 0.6;
-        mix-blend-mode: multiply;
-
-        &::before {
-            content: "";
-            position: absolute;
-            top: -2rem;
-            left: -17.5%; // widen horizontally
-            width: 135%; // expand width to spread shadow
-            aspect-ratio: 2 / 1;
-            background: conic-gradient(
-                rgba(0, 0, 0, 0.4),
-                transparent 70deg,
-                transparent 278deg,
-                rgba(0, 0, 0, 1)
-            );
-            z-index: 0;
-            pointer-events: none;
-        }
-
-
-        @include mixins.max-media-query(sm) {
-            &::before {
-            left: -32.5%; // widen horizontally
-            width: 165%; // expand width to spread shadow
-                top: -2.5rem;
-            }
-        }
+  @keyframes my-bounce {
+    0%,
+    80%,
+    100% {
+      transform: translateY(-1rem);
+      animation-timing-function: ease-in;
     }
+    84% {
+      transform: translateY(-0.8rem); // Strong downward motion
+      animation-timing-function: ease-in-out;
+    }
+    89% {
+      transform: translateY(-1.2rem); // Strong downward motion
+      animation-timing-function: ease-in-out;
+    }
+    95% {
+      transform: translateY(-0.4rem); // Strong upward rebound
+      animation-timing-function: ease-in;
+    }
+  }
+
+  .double_border {
+    position: absolute;
+    width: 97.25%;
+    height: 95.75%;
+    border: 0.25px solid var(--clr-cream-brown-50);
+    z-index: 0;
+  }
+
+  .deep_border {
+    position: absolute;
+    width: 97.1%;
+    height: 95.5%;
+    border: 0.25px solid var(--clr-real-gold-900);
+    z-index: 0;
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    overflow: hidden;
 
     &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        aspect-ratio: 2 / 1; // Makes a triangle
-        clip-path: polygon(50% 60%, 100% 0%, 0% 0%);
-        background-color: var(--clr-primary-60);
-        z-index: 1;
-        pointer-events: none;
+      content: "";
+      position: absolute;
+      top: -1rem;
+      left: -12.5%; // widen horizontally
+      width: 125%; // expand width to spread shadow
+      aspect-ratio: 2 / 1;
+      background: conic-gradient(
+        rgba(0, 0, 0, 0.4),
+        transparent 70deg,
+        transparent 278deg,
+        rgba(0, 0, 0, 1)
+      );
+      z-index: 0;
+      pointer-events: none;
     }
 
-    .handwrite-svg {
-        z-index: 1;
-        mix-blend-mode: screen;
-        opacity: 0.8;
+    @include mixins.max-media-query(sm) {
+      &::before {
+        left: -32.5%; // widen horizontally
+        width: 165%; // expand width to spread shadow
+        top: -2.5rem;
+      }
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 2 / 1; // Makes a triangle
+    clip-path: polygon(50% 60%, 100% 0%, 0% 0%);
+    background-color: var(--clr-primary-60);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .handwrite-svg {
+    margin-bottom: 0.5rem;
+    z-index: 1;
+    mix-blend-mode: screen;
+    opacity: 0.8;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 2 / 1; // Makes a triangle
+    clip-path: polygon(50% 60.3%, 100% 0%, 0% 0.6%);
+    background-color: var(--clr-primary-100);
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: darken;
+    opacity: 0.6;
+  }
+
+  @include mixins.max-media-query(sm) {
+    &::before,
+    &:after {
+      clip-path: polygon(50% 70%, 100% 0%, 0% 0%);
     }
 
     &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        aspect-ratio: 2 / 1; // Makes a triangle
-        clip-path: polygon(50% 60.3%, 100% 0%, 0% 0.6%);
-        background-color: var(--clr-primary-100);
-        z-index: 0;
-        pointer-events: none;
-        mix-blend-mode: darken;
-        opacity: 0.6;
+      opacity: 0.8;
+      clip-path: polygon(50% 70.4%, 100% 0%, 0% 0.6%);
+      // left: -20%; // widen horizontally
+      // width: 140%; // expand width to spread shadow
     }
+  }
 
-    @include mixins.max-media-query(sm) {
-        &::before, &:after {
-            clip-path: polygon(50% 70%, 100% 0%, 0% 0%);
-        }
+  &__texture {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: var(--img-noise_paper);
+    background-size: 30%;
+    background-repeat: repeat;
+    background-position: center center;
+    background-blend-mode: normal;
+    image-rendering: auto;
+    opacity: 0.67;
+    mix-blend-mode: multiply;
+    pointer-events: none;
 
-        &::after {
-            opacity: 0.8;
-            clip-path: polygon(50% 70.4%, 100% 0%, 0% 0.6%);
-            // left: -20%; // widen horizontally
-            // width: 140%; // expand width to spread shadow
-        }
+    &::after {
+      content: "";
+      position: absolute;
+      top: -1rem;
+      inset: 0;
+      background: var(--clr-primary-70);
+      opacity: 1;
+      pointer-events: none;
+      z-index: 1; // Must be over texture, but under content
+      mix-blend-mode: hard-light;
     }
+  }
 
-    &__texture {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background-image: var(--img-noise_paper);
-        background-size: 30%;
-        background-repeat: repeat;
-        background-position: center center;
-        background-blend-mode: normal;
-        image-rendering: auto;
-        opacity: 0.67;
-        mix-blend-mode: multiply;
-        pointer-events: none;
+  &__texture-second {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: var(--img-rough_paper);
+    background-size: 30%; // or "100% 100%" if exact stretching is preferred
+    background-repeat: repeat;
+    background-position: center center;
+    background-blend-mode: normal;
+    image-rendering: auto;
+    opacity: 1;
+    mix-blend-mode: color-burn;
+    pointer-events: none;
 
-        &::after {
-            content: "";
-            position: absolute;
-            top: -1rem;
-            inset: 0;
-            background: var(--clr-primary-70);
-            opacity: 1;
-            pointer-events: none;
-            z-index: 1; // Must be over texture, but under content
-            mix-blend-mode: hard-light;
-        }
+    &::after {
+      content: "";
+      position: absolute;
+      top: -1rem;
+      inset: 0;
+      background: radial-gradient(
+        circle at 50% 50%,
+        var(--clr-primary-50),
+        transparent 80%
+      );
+      opacity: 1;
+      pointer-events: none;
+      z-index: 1; // Must be over texture, but under content
+      mix-blend-mode: color-dodge;
     }
+  }
 
-    &__texture-second {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background-image: var(--img-rough_paper);
-        background-size: 30%; // or "100% 100%" if exact stretching is preferred
-        background-repeat: repeat;
-        background-position: center center;
-        background-blend-mode: normal;
-        image-rendering: auto;
-        opacity: 1;
-        mix-blend-mode: color-burn;
-        pointer-events: none;
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: -1rem;
-            inset: 0;
-            background: radial-gradient(
-                circle at 50% 50%,
-                var(--clr-primary-50),
-                transparent 80%
-            );
-            opacity: 1;
-            pointer-events: none;
-            z-index: 1; // Must be over texture, but under content
-            mix-blend-mode: color-dodge;
-        }
-    }
-
-    &__light {
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        background-color: var(--clr-primary-50);
-        opacity: 1;
-        mix-blend-mode: color;
-        pointer-events: none;
-    }
+  &__light {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background-color: var(--clr-primary-50);
+    opacity: 1;
+    mix-blend-mode: color;
+    pointer-events: none;
+  }
 }
 
 .main {
-    opacity: 0;
-    position: relative;
-    display: grid;
-    justify-content: center;
-    width: 100%;
-    transform: translateY(calc(var(--vh, 1vh) * 95));
-    background-color: var(--clr-cream-brown-100);
-    transition: all 0.5s ease-out;
+  opacity: 0;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  transform: translateY(calc(var(--vh, 1vh) * 95));
+  background-color: var(--clr-cream-brown-100);
+  transition: opacity 0.5s ease-in 1.2s;
+  z-index: 4;
 
-    z-index: 4;
-
-    &.top {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
+  &.top {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }
 
 @keyframes reveal {
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 }

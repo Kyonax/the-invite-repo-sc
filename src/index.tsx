@@ -24,6 +24,12 @@ export const injectImageUrlsToCSS = (cache) => {
 
 export function App({ data }) {
   const [loaded, setLoaded] = useState(false);
+  const [isTop, setIsTop] = useState(false); // State to toggle the 'top' class
+
+  // Handler to toggle the 'top' class on click
+  const handleSealClick = () => {
+    setIsTop((prev) => !prev);
+  };
 
   useEffect(() => {
     const loadCriticalImages = async () => {
@@ -43,7 +49,7 @@ export function App({ data }) {
         </div>
       ) : (
         <>
-          <section class="loader">
+          <section className={`loader ${isTop ? "hidden" : ""}`}>
             <div class="loader__texture"></div>
             <div class="loader__texture-second"></div>
             <div class="loader__light"></div>
@@ -54,24 +60,43 @@ export function App({ data }) {
                 fontSize={100}
                 letterDelay={0.22}
               />
-              <p>
-                Hemos reservado {data?.reserved || FALLBACK_RESERVED} lugar(es)
-                en su honor
-              </p>
             </div>
             <div class="seal">
               <div class="seal__triangle"></div>
+              <a href="#" class="circular-text">
+                <svg width="200" height="200" viewBox="0 0 200 200">
+                  <defs>
+                    <path
+                      id="circlePath"
+                      d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+                    />
+                  </defs>
+                  <text font-size="currentFontSize" fill="currentColor">
+                    <textPath href="#circlePath" startOffset="0">
+                      Click Aquí - Click Aquí
+                    </textPath>
+                  </text>
+                </svg>
+              </a>
               <BlastImage
                 img="the_invite_seal_sc"
                 className="seal-image"
                 alt="The Invite Seal - S&C"
                 fetchpriority="high"
+                onClick={handleSealClick} // Add click handler here
               />
             </div>
             <div class="double_border"></div>
             <div class="deep_border"></div>
+
+            <div class="card-reserved">
+              <p>
+                Hemos reservado {data?.reserved || FALLBACK_RESERVED} lugar(es){" "}
+                {data?.baby ? " + bebé" : ""} en su honor.
+              </p>
+            </div>
           </section>
-          <section class="main">
+          <section className={`main ${isTop ? "top" : ""}`}>
             <span>Section #1</span>
           </section>
         </>

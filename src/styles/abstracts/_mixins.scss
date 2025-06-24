@@ -52,13 +52,12 @@
  * $style - Font style (default: normal).
  */
 @mixin font-face($name, $path, $weight: normal, $style: normal) {
-    @font-face {
-        font-family: "#{$name}";
-        src: url("the-invite-sc/src/assets/fonts/#{$path}.otf")
-            format("truetype");
-        font-weight: #{$weight};
-        font-style: #{$style};
-    }
+  @font-face {
+    font-family: "#{$name}";
+    src: url("@/assets/fonts/#{$path}.ttf") format("truetype");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
 }
 
 /**
@@ -71,11 +70,11 @@
  * $key - The size key from your $breakpoints map.
  */
 @mixin min-media-query($key) {
-    $size: map.get($breakpoints, $key);
+  $size: map.get($breakpoints, $key);
 
-    @media only screen and (min-width: $size) {
-        @content;
-    }
+  @media only screen and (min-width: $size) {
+    @content;
+  }
 }
 
 /**
@@ -88,9 +87,9 @@
  * $key - The size key from your $breakpoints map.
  */
 @mixin max-media-query($key) {
-    $size: map.get($breakpoints, $key);
+  $size: map.get($breakpoints, $key);
 
-    @media only screen and (max-width: $size) {
-        @content;
-    }
+  @media only screen and (max-width: $size) {
+    @content;
+  }
 }
