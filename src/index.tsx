@@ -10,7 +10,12 @@ const FALLBACK_TEXT = "Familia Moreno Cruz";
 const FALLBACK_RESERVED = 1;
 
 // List of critical images to preload
-const CRITICAL_IMAGES = ["the_invite_seal_sc", "noise_paper", "rough_paper"];
+const CRITICAL_IMAGES = [
+  "the_invite_seal_sc",
+  "noise_paper",
+  "rough_paper",
+  "256A6887",
+];
 
 // Inject image URLs into CSS custom properties for SCSS usage
 export const injectImageUrlsToCSS = (cache) => {
@@ -52,7 +57,7 @@ export function App({ data }) {
   const dotPosition = (progress / 100) * 180; // Adjust 180 based on bar width - dot width
 
   return (
-    <div id="root">
+    <div id="root" class={`${isTop ? "default" : ""}`}>
       {!loaded ? (
         <div class="preloader-screen">
           <div class="preloader-animation">
@@ -252,7 +257,7 @@ m1895 -185 c50 -14 65 -44 43 -87 -42 -81 -181 -172 -267 -174 -33 -1 -58 -11
         </div>
       ) : (
         <>
-          <section className={`loader ${isTop ? "hidden" : ""}`}>
+          <section class={`loader ${isTop ? "hidden" : ""}`}>
             <div class="loader__texture"></div>
             <div class="loader__texture-second"></div>
             <div class="loader__light"></div>
@@ -298,8 +303,15 @@ m1895 -185 c50 -14 65 -44 43 -87 -42 -81 -181 -172 -267 -174 -33 -1 -58 -11
               </p>
             </div>
           </section>
-          <section className={`main ${isTop ? "top" : ""}`}>
-            <span>Section #1</span>
+          <section class={`main ${isTop ? "top" : ""}`}>
+            <div class="first-section">
+              <BlastImage
+                img="256A6887"
+                className="cover-image"
+                alt="Nos Casamos - Image"
+                fetchpriority="high"
+              />
+            </div>
           </section>
         </>
       )}

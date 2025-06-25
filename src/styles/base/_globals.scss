@@ -108,6 +108,10 @@ body {
   @include mixins.max-media-query(sm) {
     height: calc(var(--vh, 1vh) * 91);
   }
+
+  &.default {
+    height: auto !important;
+  }
 }
 
 .card-reserved {
@@ -187,7 +191,7 @@ body {
         width: 40px;
         position: absolute;
         top: -49px; // Center the dot vertically on the bar
-        left: 3px; // Base position
+        left: -0.5rem; // Base position
         transition: transform 0.3s ease-in-out; // Smooth transition for position changes
       }
     }
@@ -512,13 +516,24 @@ body {
   justify-content: center;
   width: 100%;
   transform: translateY(calc(var(--vh, 1vh) * 95));
-  background-color: var(--clr-cream-brown-100);
   transition: opacity 0.5s ease-in 1.2s;
   z-index: 4;
+  max-width: 1440px;
 
   &.top {
     opacity: 1 !important;
     transform: translateY(0) !important;
+  }
+
+  .first-section {
+    position: relative;
+    display: grid;
+
+    picture {
+      img {
+        width: 130%;
+      }
+    }
   }
 }
 
