@@ -528,12 +528,387 @@ body {
   .first-section {
     position: relative;
     display: grid;
+    justify-items: center;
 
     picture {
+      position: relative;
+      display: grid;
+
       img {
-        width: 130%;
+        width: 100%;
+        display: block; // Ensures the image behaves as a block for proper positioning
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        inset: 0;
+        background: var(--clr-primary-300);
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: 1; // Must be over texture, but under content
+        mix-blend-mode: color;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40%; // Adjust this value to control the gradient height
+        background: linear-gradient(
+          to top,
+          var(--clr-cream-brown-50),
+          transparent
+        ); // White at the bottom, fading to transparent at the top
+        pointer-events: none; // Prevents the overlay from interfering with interactions
+        z-index: 2;
       }
     }
+  }
+
+  .second-section {
+    position: relative;
+    font-family: "Peristiwa";
+    color: var(--clr-primary-300);
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: var(--fs-500);
+    margin: 6rem 0rem;
+    letter-spacing: 0rem;
+
+    p {
+      max-width: 700px;
+    }
+
+    .wedding-phrase {
+      margin: 6rem 0rem;
+    }
+
+    .blessing-text {
+      color: var(--clr-secondary-100);
+      position: relative;
+      font-family: "DMSerif";
+      font-size: var(--fs-400);
+
+      span {
+        font-family: "Astutely";
+        position: absolute;
+        width: 100%;
+        justify-items: center;
+        left: 0;
+        top: 0;
+        opacity: 0.2;
+        transform: translateY(-1.3rem);
+
+        font-weight: 400; // make sure you’ve loaded 600
+        font-size: clamp(1rem, 20vw, 8.8rem);
+        line-height: clamp(1rem, 20vw, 7rem);
+
+        // outline only
+        color: transparent; // hide any fill
+        -webkit-text-stroke-width: 1px; // your stroke thickness
+        -webkit-text-stroke-color: var(--clr-secondary-100); // stroke color
+
+        // ensure the browser doesn’t fill in the characters
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .blessing-parents {
+      margin-top: 2rem;
+      position: relative;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+
+      .parents {
+        padding: 1.5rem;
+        display: grid;
+        font-family: "DMSerif";
+        font-size: var(--fs-200);
+
+        &__from {
+          color: var(--clr-secondary-100);
+          font-size: var(--fs-100);
+        }
+
+        span > span {
+          font-family: "Peristiwa";
+          font-size: var(--fs-500);
+        }
+      }
+    }
+
+    @include mixins.max-media-query(sm) {
+      p {
+        max-width: 350px;
+      }
+
+      img,
+      svg {
+        width: 190px;
+      }
+
+      .blessing-parents {
+        grid-template-columns: auto;
+        margin-top: 1.2rem;
+      }
+    }
+  }
+
+  .third-section {
+    margin: 9rem 0rem;
+    position: relative;
+    width: 100%;
+
+    .the-images {
+      position: relative;
+      width: 100%;
+      display: flex;
+      gap: 0.5rem;
+
+      .center-image,
+      .left-image,
+      .right-image {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        img {
+          width: 100%;
+          pointer-events: none;
+        }
+      }
+
+      .center-image {
+        width: 50%;
+      }
+
+      .left-image,
+      .right-image {
+        width: 25%;
+      }
+    }
+
+    @include mixins.max-media-query(sm) {
+      margin: 1rem 0rem;
+    }
+  }
+
+  .fourth-section {
+    position: relative;
+    font-family: "Peristiwa";
+    color: var(--clr-primary-300);
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: var(--fs-500);
+    margin: 6rem 0rem;
+    letter-spacing: 0rem;
+    background-color: var(--clr-primary-100);
+    padding: 6rem 0rem;
+
+    .counter-text {
+      width: 100%;
+      color: var(--clr-cream-brown-50);
+      position: relative;
+      font-family: "DMSerif";
+      font-size: var(--fs-400);
+
+      span {
+        font-family: "Astutely";
+        position: absolute;
+        width: 100%;
+        justify-items: center;
+        left: 0;
+        top: 0;
+        opacity: 0.5;
+        transform: translateY(-1.9rem);
+
+        font-weight: 400; // make sure you’ve loaded 600
+        font-size: clamp(1rem, 20vw, 8.8rem);
+        line-height: clamp(1rem, 20vw, 7rem);
+
+        // outline only
+        color: transparent; // hide any fill
+        -webkit-text-stroke-width: 1px; // your stroke thickness
+        -webkit-text-stroke-color: var(--clr-cream-brown-50); // stroke color
+
+        // ensure the browser doesn’t fill in the characters
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  .cover-date {
+    position: absolute;
+    bottom: 0;
+    font-size: var(--fs-300);
+    color: var(--clr-primary-500);
+    z-index: 3;
+
+    @include mixins.max-media-query(md) {
+      font-size: var(--fs-100);
+    }
+  }
+
+  .cover-names {
+    // positioning
+    position: absolute;
+    top: 0;
+    margin-top: 4rem;
+    width: 90%;
+    max-width: 850px;
+    text-align: center;
+
+    // typography
+    font-family: "Astutely", cursive;
+    font-weight: 400; // make sure you’ve loaded 600
+    font-size: clamp(1rem, 12vw, 8.8rem);
+    line-height: clamp(1rem, 12vw, 7rem);
+
+    // outline only
+    color: transparent; // hide any fill
+    -webkit-text-stroke-width: 1px; // your stroke thickness
+    -webkit-text-stroke-color: var(--clr-primary-500); // stroke color
+
+    // ensure the browser doesn’t fill in the characters
+    -webkit-text-fill-color: transparent;
+    z-index: 2;
+
+    .cover-wedding {
+      text-align: center;
+      width: 100%;
+      top: 0;
+      left: 0;
+      font-size: var(--fs-300);
+      transform: translateY(-1.5rem);
+      position: absolute;
+      color: var(--clr-primary-500);
+      font-family: "DMSerif";
+      color: var(--clr-primary-500);
+      -webkit-text-fill-color: var(--clr-primary-500);
+      -webkit-text-stroke-width: 0px; // your stroke thickness;
+      z-index: 1;
+    }
+
+    @include mixins.max-media-query(md) {
+      margin-top: 1.5rem;
+      -webkit-text-stroke-width: 0.5px; // your stroke thickness
+
+      .cover-wedding {
+        font-size: var(--fs-100);
+        transform: translateY(-0.5rem);
+      }
+    }
+  }
+}
+
+.countdown-container {
+  display: grid;
+  text-align: center;
+  background-color: var(--clr-neutral-500);
+  border: 2px solid var(--clr-border-100);
+  border-radius: 8px;
+  margin: 2rem 0;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+.countdown-display {
+  width: 100%;
+  margin: 9rem 0rem;
+  margin-bottom: 0rem;
+  font-size: clamp(1rem, 12vw, 8.8rem);
+  font-weight: 700;
+  color: var(--clr-warning-100);
+  letter-spacing: 1px;
+}
+
+.countdown-error {
+  color: var(--clr-error-100);
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.calendar-actions {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+
+  @include mixins.max-media-query(sm) {
+    width: 95%;
+
+    .calendar-button {
+      margin: 0.5rem 0rem;
+    }
+  }
+}
+
+.calendar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--clr-neutral-100);
+  border: 0px;
+  gap: 0.25rem;
+  font-size: var(--fs-100);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.5rem 0rem;
+}
+
+.calendar-button:hover {
+  background-color: var(--clr-primary-300);
+  transform: translateY(-2px);
+}
+
+.calendar-button:active {
+  transform: translateY(0);
+}
+
+.icon-google,
+.icon-outlook,
+.icon-download {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.icon-google {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>');
+}
+
+.icon-outlook {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M7 2h10c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm1 4v3h6V6H8zm8 11c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-4-7H8v3h4v-3z"/></svg>');
+}
+
+.icon-download {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>');
+}
+
+@media (max-width: 768px) {
+  .calendar-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .calendar-button {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
   }
 }
 

@@ -2,9 +2,12 @@ import { hydrate, prerender as ssr } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
 import { Handwritten } from "./component/Handwritten";
 import BlastImage from "./component/BlastImage";
+import Countdown from "./component/Countdown";
 import { preloadImages, GLOBAL_IMAGE_CACHE } from "./util/preload-images.util";
 import data from "./data/families-invited.json";
 import "./styles/main.scss";
+
+import separator_svg from "./assets/backup/separator_one.svg";
 
 const FALLBACK_TEXT = "Familia Moreno Cruz";
 const FALLBACK_RESERVED = 1;
@@ -14,7 +17,10 @@ const CRITICAL_IMAGES = [
   "the_invite_seal_sc",
   "noise_paper",
   "rough_paper",
-  "256A6887",
+  "COVER",
+  "256A6935", // Center Image
+  "256A6761", // Right Image
+  "256A7100", // Left Image
 ];
 
 // Inject image URLs into CSS custom properties for SCSS usage
@@ -306,11 +312,97 @@ m1895 -185 c50 -14 65 -44 43 -87 -42 -81 -181 -172 -267 -174 -33 -1 -58 -11
           <section class={`main ${isTop ? "top" : ""}`}>
             <div class="first-section">
               <BlastImage
-                img="256A6887"
+                img="COVER"
                 className="cover-image"
                 alt="Nos Casamos - Image"
                 fetchpriority="high"
               />
+              <h1 class="cover-names">
+                <span class="cover-wedding">Nuestra Boda</span> Sofia y
+                Cristhian
+              </h1>
+
+              <h1 className="cover-date">27.02.26</h1>
+            </div>
+
+            <div class="second-section">
+              <div class="separator">
+                <img src={separator_svg} alt="Separator" />
+              </div>
+              <p class="wedding-phrase">
+                Donde el río abraza la selva, floreció nuestro amor. Hoy, en el
+                corazón de nuestro hogar, celebramos lo que la vida tejió con
+                paciencia. Queremos que vengas a celebrar esta historia que
+                apenas comienza.
+              </p>
+              <h3 class="blessing-text">
+                <span>Bendición</span>Con la bendición de nuestros padres
+              </h3>
+
+              <div class="blessing-parents">
+                <div class="parents" style="text-align: left;">
+                  <span class="parents__from">Padres de la Novia</span>
+                  <span>
+                    <span>N</span>elson <span>O</span>swaldo <span>R</span>
+                    amírez <span>A</span>ristizábal
+                  </span>
+                  <span>
+                    <span>Y</span>olima <span>R</span>oció <span>C</span>ruz{" "}
+                    <span>V</span>elásquez
+                  </span>
+                </div>
+                <div class="parents" style="text-align: right;">
+                  <span class="parents__from">Padres del Novio</span>
+                  <span>
+                    <span>M</span>anuel <span>G</span>uillermo <span>T</span>
+                    apia <span>Q</span>uintana
+                  </span>
+                  <span>
+                    <span>G</span>ladys <span>P</span>áez <span>Q</span>uintero
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="third-section">
+              <div class="the-images">
+                <div class="left-image">
+                  <BlastImage
+                    img="256A7100"
+                    className="left-image"
+                    alt="The Images - Left"
+                    fetchpriority="high"
+                    onClick={handleSealClick}
+                  />
+                </div>
+                <div class="center-image">
+                  <BlastImage
+                    img="256A6935"
+                    className="center-image"
+                    alt="The Images - Center"
+                    fetchpriority="high"
+                    onClick={handleSealClick}
+                  />
+                </div>
+                <div class="right-image">
+                  <BlastImage
+                    img="256A6761"
+                    className="right-image"
+                    alt="The Images - Right"
+                    fetchpriority="high"
+                    onClick={handleSealClick}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="fourth-section">
+              <h3 class="counter-text">
+                <span>Save the Date</span>Aparta la Fecha
+                <div class="counter">
+                  <Countdown />
+                </div>
+              </h3>
             </div>
           </section>
         </>
