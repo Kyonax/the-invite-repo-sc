@@ -131,7 +131,7 @@ export default function CountdownBogota() {
         </button>
 
         <button class="calendar-button" onClick={() => saveToCalendar("ics")}>
-          <i class="icon-download"></i> ICS
+          <i class="icon-download"></i> iOS
         </button>
       </div>
     </div>
