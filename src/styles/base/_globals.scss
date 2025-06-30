@@ -531,68 +531,47 @@ body {
     justify-items: center;
 
     picture {
+      width: 100%;
       position: relative;
       display: grid;
+      overflow: hidden;
 
       img {
+        margin-top: 3rem;
         width: 100%;
-        display: block; // Ensures the image behaves as a block for proper positioning
-      }
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: -1rem;
-        inset: 0;
-        background: var(--clr-primary-300);
-        opacity: 0.4;
-        pointer-events: none;
-        z-index: 1; // Must be over texture, but under content
-        mix-blend-mode: color;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 40%; // Adjust this value to control the gradient height
-        background: linear-gradient(
-          to top,
-          var(--clr-cream-brown-50),
-          transparent
-        ); // White at the bottom, fading to transparent at the top
-        pointer-events: none; // Prevents the overlay from interfering with interactions
-        z-index: 2;
+        display: block;
+        position: relative;
+        z-index: 1;
       }
     }
   }
 
   .second-section {
     position: relative;
-    font-family: "Peristiwa";
     color: var(--clr-primary-300);
     display: grid;
     justify-items: center;
     width: 100%;
     text-align: center;
-    font-size: var(--fs-500);
+    font-size: var(--fs-200);
+    line-height: var(--fs-300);
     margin: 6rem 0rem;
+    margin-top: 4rem;
     letter-spacing: 0rem;
 
     p {
-      max-width: 700px;
+      max-width: 600px;
     }
 
     .wedding-phrase {
+      font-style: italic;
       margin: 6rem 0rem;
+      margin-top: 3rem;
     }
 
     .blessing-text {
-      color: var(--clr-secondary-100);
+      color: var(--clr-primary-300);
       position: relative;
-      font-family: "DMSerif";
       font-size: var(--fs-400);
 
       span {
@@ -612,7 +591,7 @@ body {
         // outline only
         color: transparent; // hide any fill
         -webkit-text-stroke-width: 1px; // your stroke thickness
-        -webkit-text-stroke-color: var(--clr-secondary-100); // stroke color
+        -webkit-text-stroke-color: var(--clr-primary-300); // stroke color
 
         // ensure the browser doesn’t fill in the characters
         -webkit-text-fill-color: transparent;
@@ -626,6 +605,7 @@ body {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.5rem;
+      line-height: var(--fs-500);
 
       .parents {
         padding: 1.5rem;
@@ -650,9 +630,8 @@ body {
         max-width: 350px;
       }
 
-      img,
-      svg {
-        width: 190px;
+      .wedding-phrase {
+        margin-top: 0rem;
       }
 
       .blessing-parents {
@@ -712,63 +691,85 @@ body {
     font-size: var(--fs-500);
     margin: 6rem 0rem;
     letter-spacing: 0rem;
-    background-color: var(--clr-primary-100);
-    padding: 6rem 0rem;
     padding-bottom: 3rem;
 
-    .counter-text {
+    picture {
       width: 100%;
-      color: var(--clr-cream-brown-50);
       position: relative;
+      display: grid;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        display: block;
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .counter-text {
+      display: grid;
+      position: absolute;
+      top: 0;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      color: var(--clr-cream-brown-50);
       font-family: "DMSerif";
       font-size: var(--fs-400);
+      z-index: 2;
 
-      span {
-        font-family: "Astutely";
+      &__title {
+        width: 100%;
+        height: fit-content;
+        transform: translateY(9rem);
+
+        span {
+          font-family: "Astutely";
+          position: absolute;
+          width: 100%;
+          justify-items: center;
+          left: 0;
+          top: 0;
+          opacity: 0.5;
+          transform: translateY(-1.9rem);
+
+          font-weight: 400; // make sure you’ve loaded 600
+          font-size: clamp(1rem, 20vw, 8.8rem);
+          line-height: clamp(1rem, 20vw, 7rem);
+
+          // outline only
+          color: transparent; // hide any fill
+          -webkit-text-stroke-width: 1px; // your stroke thickness
+          -webkit-text-stroke-color: var(--clr-cream-brown-50); // stroke color
+
+          // ensure the browser doesn’t fill in the characters
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      .counter {
         position: absolute;
         width: 100%;
-        justify-items: center;
-        left: 0;
-        top: 0;
-        opacity: 0.5;
-        transform: translateY(-1.9rem);
-
-        font-weight: 400; // make sure you’ve loaded 600
-        font-size: clamp(1rem, 20vw, 8.8rem);
-        line-height: clamp(1rem, 20vw, 7rem);
-
-        // outline only
-        color: transparent; // hide any fill
-        -webkit-text-stroke-width: 1px; // your stroke thickness
-        -webkit-text-stroke-color: var(--clr-cream-brown-50); // stroke color
-
-        // ensure the browser doesn’t fill in the characters
-        -webkit-text-fill-color: transparent;
+        bottom: 0;
+        transform: translateY(-12rem);
       }
     }
 
     @include mixins.max-media-query(sm) {
+      margin-top: 0rem;
       padding: 3rem 0rem;
       padding-bottom: 0rem;
 
       .counter-text {
-        span {
-          opacity: 0.4;
-          transform: translateY(-1.1rem);
+        &__title {
+          span {
+            opacity: 0.4;
+            transform: translateY(-1.1rem);
+          }
         }
       }
-    }
-  }
-
-  .cover-date {
-    position: absolute;
-    bottom: 0;
-    font-size: var(--fs-300);
-    color: var(--clr-primary-500);
-    z-index: 3;
-
-    @include mixins.max-media-query(md) {
-      font-size: var(--fs-100);
     }
   }
 
@@ -778,19 +779,18 @@ body {
     top: 0;
     margin-top: 4rem;
     width: 90%;
-    max-width: 850px;
     text-align: center;
 
     // typography
     font-family: "Astutely", cursive;
     font-weight: 400; // make sure you’ve loaded 600
-    font-size: clamp(1rem, 12vw, 8.8rem);
-    line-height: clamp(1rem, 12vw, 7rem);
+    font-size: clamp(1rem, 18vw, 8.8rem);
+    line-height: clamp(1rem, 18vw, 7rem);
 
     // outline only
     color: transparent; // hide any fill
     -webkit-text-stroke-width: 1px; // your stroke thickness
-    -webkit-text-stroke-color: var(--clr-primary-500); // stroke color
+    -webkit-text-stroke-color: var(--clr-primary-300); // stroke color
 
     // ensure the browser doesn’t fill in the characters
     -webkit-text-fill-color: transparent;
@@ -804,15 +804,14 @@ body {
       font-size: var(--fs-300);
       transform: translateY(-1.5rem);
       position: absolute;
-      color: var(--clr-primary-500);
+      color: var(--clr-primary-300);
       font-family: "DMSerif";
-      color: var(--clr-primary-500);
-      -webkit-text-fill-color: var(--clr-primary-500);
+      -webkit-text-fill-color: var(--clr-primary-300);
       -webkit-text-stroke-width: 0px; // your stroke thickness;
       z-index: 1;
     }
 
-    @include mixins.max-media-query(md) {
+    @include mixins.max-media-query(sm) {
       margin-top: 1.5rem;
       -webkit-text-stroke-width: 0.5px; // your stroke thickness
 

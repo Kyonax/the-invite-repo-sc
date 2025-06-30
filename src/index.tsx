@@ -7,8 +7,6 @@ import { preloadImages, GLOBAL_IMAGE_CACHE } from "./util/preload-images.util";
 import data from "./data/families-invited.json";
 import "./styles/main.scss";
 
-import separator_svg from "./assets/backup/separator_one.svg";
-
 const FALLBACK_TEXT = "Familia Moreno Cruz";
 const FALLBACK_RESERVED = 1;
 
@@ -18,6 +16,7 @@ const CRITICAL_IMAGES = [
   "noise_paper",
   "rough_paper",
   "COVER",
+  "IMG_TRANSITION_ONE",
   "256A6935", // Center Image
   "256A6761", // Right Image
   "256A7100", // Left Image
@@ -321,14 +320,9 @@ m1895 -185 c50 -14 65 -44 43 -87 -42 -81 -181 -172 -267 -174 -33 -1 -58 -11
                 <span class="cover-wedding">Nuestra Boda</span> Sofia y
                 Cristhian
               </h1>
-
-              <h1 className="cover-date">27.02.26</h1>
             </div>
 
             <div class="second-section">
-              <div class="separator">
-                <img src={separator_svg} alt="Separator" />
-              </div>
               <p class="wedding-phrase">
                 Donde el río abraza la selva, floreció nuestro amor. Hoy, en el
                 corazón de nuestro hogar, celebramos lo que la vida tejió con
@@ -364,6 +358,23 @@ m1895 -185 c50 -14 65 -44 43 -87 -42 -81 -181 -172 -267 -174 -33 -1 -58 -11
               </div>
             </div>
 
+            <div class="fourth-section">
+              <h3 class="counter-text">
+                <span class="counter-text__title">
+                  <span>Save the Date</span>Aparta la Fecha
+                </span>
+                <div class="counter">
+                  <Countdown />
+                </div>
+              </h3>
+              <BlastImage
+                img="IMG_TRANSITION_ONE"
+                className="transition-image"
+                alt="Nos Casamos - Transition Image"
+                fetchpriority="high"
+              />
+            </div>
+
             <div class="third-section">
               <div class="the-images">
                 <div class="left-image">
@@ -394,15 +405,6 @@ m1895 -185 c50 -14 65 -44 43 -87 -42 -81 -181 -172 -267 -174 -33 -1 -58 -11
                   />
                 </div>
               </div>
-            </div>
-
-            <div class="fourth-section">
-              <h3 class="counter-text">
-                <span>Save the Date</span>Aparta la Fecha
-                <div class="counter">
-                  <Countdown />
-                </div>
-              </h3>
             </div>
           </section>
         </>
