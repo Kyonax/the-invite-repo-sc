@@ -6,8 +6,6 @@ const SubSectionImportantInfo = () => {
       <h2 class="important-info-section__title">Información importante</h2>
 
       <div class="important-info-section__content">
-        <div class="important-info-section__image" />
-
         <div class="important-info-section__details">
           <p class="important-info-section__dresscode">
             <strong>Código de vestimenta:</strong> Elegante y fresco
