@@ -5,7 +5,7 @@ import path from "path";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
-  base: "/the-invite-sc",
+  base: "/the-invite-repo-sc",
   plugins: [
     preact({
       prerender: {

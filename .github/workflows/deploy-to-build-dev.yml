@@ -1,4 +1,4 @@
-name: the-invite-sc - Build and Deploy to build-dev
+name: the-invite-repo-sc - Build and Deploy to build-dev
 
 on:
   push:
