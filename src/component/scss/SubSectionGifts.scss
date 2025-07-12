@@ -1,0 +1,21 @@
+.gifts-section {
+  background-color: #fffdf9;
+  padding: 3rem 1.5rem;
+  text-align: center;
+
+  &__title {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    color: #6b4c3b;
+    margin-bottom: 1.5rem;
+  }
+
+  &__message {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #4d4d4d;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 500;
+  }
+}

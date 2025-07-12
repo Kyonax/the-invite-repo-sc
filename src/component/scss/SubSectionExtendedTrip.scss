@@ -1,0 +1,57 @@
+.extended-trip-section {
+  background-color: #f7f4ef;
+  padding: 3rem 1.5rem;
+  color: #3c3c3c;
+
+  &__title {
+    font-size: 2rem;
+    font-family: "Playfair Display", serif;
+    color: #5c3b2e;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  &__intro {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  &__details {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.7;
+
+    h3 {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #4c3b3b;
+    }
+
+    ul {
+      margin-top: 1rem;
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &__sublist {
+      padding-left: 1.2rem;
+      margin-top: 0.3rem;
+
+      li {
+        list-style-type: circle;
+        font-style: italic;
+        margin-bottom: 0.3rem;
+      }
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+  }
+}

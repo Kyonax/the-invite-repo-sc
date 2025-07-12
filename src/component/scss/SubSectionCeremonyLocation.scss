@@ -1,0 +1,35 @@
+.ceremony-location-section {
+  padding: 2rem;
+  background-color: #fafafa;
+  text-align: center;
+
+  &__title {
+    font-size: 2rem;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 1.5rem;
+  }
+
+  &__details {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  &__place,
+  &__date,
+  &__address {
+    margin-bottom: 0.75rem;
+  }
+
+  &__map-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #3b5998;
+
+    &:hover {
+      color: #2a3e6e;
+    }
+  }
+}

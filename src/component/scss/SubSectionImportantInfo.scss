@@ -1,0 +1,73 @@
+.important-info-section {
+  background-color: #fffdf8;
+  padding: 2rem 1.5rem;
+
+  &__title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Playfair Display", serif;
+    color: #a0522d;
+    margin-bottom: 2rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 280px;
+    background-image: url("/images/dresscode.jpg"); // Replace with actual image
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__dresscode,
+  &__palette {
+    font-size: 1rem;
+    color: #444;
+  }
+
+  &__quote {
+    font-style: italic;
+    color: #777;
+    font-size: 1rem;
+    padding: 1rem 0;
+    border-left: 4px solid #a0522d;
+    padding-left: 1rem;
+  }
+
+  &__colors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .color-block {
+    background-color: var(--color);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &__link {
+    margin-top: 1rem;
+    text-align: center;
+    display: inline-block;
+    color: #a0522d;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

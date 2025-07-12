@@ -1,0 +1,27 @@
+.welcome-cocktail-section {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff; // or transparent if needed
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+  }
+
+  &__info {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  &__location,
+  &__datetime,
+  &__dresscode {
+    margin-bottom: 1rem;
+  }
+
+  em {
+    font-style: italic;
+    color: #555;
+  }
+}
