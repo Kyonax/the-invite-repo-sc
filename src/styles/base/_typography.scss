@@ -37,6 +37,8 @@
 @include mixins.font-face("Astutely", "Astutely", 400, normal);
 @include mixins.font-face("DMSerif", "DMSerifDisplay-Regular", 400, normal);
 @include mixins.font-face("DMSerif", "DMSerifDisplay-Italic", 400, Italic);
+@include mixins.font-face("EBGaramond", "EBGaramond", 400, normal);
+@include mixins.font-face("EBGaramond", "EBGaramond-Italic", 400, Italic);
 
 // Global typography settings
 html {
@@ -44,7 +46,7 @@ html {
 }
 
 body {
-  font-family: "DMSerif", "Roboto Mono", "Courier New", Courier, monospace;
+  font-family: "EBGaramond", "Roboto Mono", "Courier New", Courier, monospace;
   font-display: swap;
   font-size: var(--fs-300);
   line-height: var(--fs-500);

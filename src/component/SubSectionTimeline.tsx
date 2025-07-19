@@ -1,32 +1,74 @@
+import InviteTitle from "./InviteTitle";
 import "./scss/SubSectionTimeline.scss";
+import SvgIcon from "./SvgIcon";
 
-const timelineEvents = [
-  { time: "17:00", title: "Coctel de bienvenida", date: "26 febrero" },
-  { time: "15:00", title: "Llegada invitados", date: "27 febrero" },
-  { time: "16:00", title: "Ceremonia", date: "27 febrero" },
-  { time: "17:30", title: "Sesión de fotos", date: "27 febrero" },
-  { time: "18:30", title: "Cena", date: "27 febrero" },
-  { time: "20:00", title: "Fiesta", date: "27 febrero" },
+interface TimelineEvent {
+  time: string;
+  title: string;
+  icon: string;
+}
+
+const leftEvents: TimelineEvent[] = [
+  { time: "", title: "", icon: "" },
+  { time: "", title: "", icon: "" },
+  { time: "17:00 AM", title: "Photos", icon: "SvgCamera" },
+  { time: "", title: "", icon: "" },
+  { time: "19:30 PM", title: "Dessert", icon: "SvgDessert" },
+  { time: "", title: "", icon: "" },
+  { time: "21:00 PM", title: "First Dance", icon: "SvgFirstDance" },
+  { time: "", title: "", icon: "" },
+  { time: "2:00 AM", title: "Carriages Home", icon: "SvgFireworks" },
+  { time: "", title: "", icon: "" },
+];
+
+const rightEvents: TimelineEvent[] = [
+  { time: "15:30 PM", title: "Wedding Ceremony", icon: "SvgWeddingCeremony" },
+  { time: "", title: "", icon: "" },
+  { time: "18:30 PM", title: "Wedding Lunch", icon: "SvgLunch" },
+  { time: "", title: "", icon: "" },
+  { time: "20:00 PM", title: "Cocktail Hour", icon: "SvgCocktail" },
+  { time: "", title: "", icon: "" },
+  { time: "23:00 PM", title: "Crazy Hour", icon: "SvgCrazyHour" },
+  { time: "", title: "", icon: "" },
 ];
 
 const SubSectionTimeline = () => {
   return (
-    <div class="timeline-section">
-      <h2 class="timeline-section__title">Cronograma del Día</h2>
-      <ul class="timeline-section__list">
-        {timelineEvents.map((event) => (
-          <li
-            class="timeline-section__item"
-            key={`${event.time}-${event.title}`}
-          >
-            <span class="timeline-section__time">{event.time}</span>
-            <span class="timeline-section__content">
-              <span class="timeline-section__event">{event.title}</span>
-              <span class="timeline-section__date">{event.date}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
+    <div class="section-timeline">
+      <InviteTitle
+        main="Itinerario de Ceremonia"
+        background="Wedding Itinerary"
+      />
+
+      <section class="timeline">
+        <div class="timeline__line">
+          <div class="timeline__column timeline__column--left">
+            {leftEvents.map((event, index) => (
+              <div class="timeline__item" key={`left-${index}`}>
+                <SvgIcon name={event.icon} />
+                <div class="timeline__text timeline__text--left">
+                  <div class="timeline__time">{event.time}</div>
+                  <div class="timeline__title">{event.title}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="timeline__column timeline__column--right">
+            {rightEvents.map((event, index) => (
+              <div class="timeline__item" key={`right-${index}`}>
+                <SvgIcon name={event.icon} />
+                <div class="timeline__text timeline__text--right">
+                  <div class="timeline__time">{event.time}</div>
+                  <div class="timeline__title">{event.title}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="timeline__vertical-line"></div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import BlastImage from "./BlastImage";
 import Countdown from "./Countdown";
+import InviteTitle from "./InviteTitle";
 
 const SubSectionCountdown = () => {
   return (
     <div class="fourth-section">
-      <h3 class="counter-text">
-        <span class="counter-text__title">
-          <span>Save the Date</span>Aparta la Fecha
-        </span>
+      <div class="counter-text">
+        <InviteTitle main="Aparta la Fecha" background="Save the Date" />
         <div class="counter">
           <Countdown />
         </div>
-      </h3>
+      </div>
+
       <BlastImage
         img="IMG_TRANSITION_ONE"
         className="transition-image"

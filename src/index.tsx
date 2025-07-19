@@ -8,6 +8,8 @@ import SectionMain from "./component/SectionMain";
 
 import data from "./data/families-invited.json";
 import "./styles/main.scss";
+import MusicPlayer from "./component/MusicPlayer";
+import ReloadButton from "./component/ReloadButton";
 
 // List of critical images to preload
 const CRITICAL_IMAGES = [
@@ -16,9 +18,10 @@ const CRITICAL_IMAGES = [
   "rough_paper",
   "COVER",
   "IMG_TRANSITION_ONE",
-  "256A6935", // Center Image
-  "256A6761", // Right Image
-  "256A7100", // Left Image
+  "OLIVE_DECO_DOWN_LEFT",
+  "256A6935",
+  "256A6761",
+  "256A7100",
   "256A6887",
   "256A6912",
   "256A6944",
@@ -37,22 +40,28 @@ const CRITICAL_IMAGES = [
   "IMG_8263",
 ];
 
-// Inject image URLs into CSS custom properties for SCSS usage
+// ✅ FIX: Encode image URLs before using in CSS
 export const injectImageUrlsToCSS = (cache) => {
   const style = document.createElement("style");
+
   const rules = Object.entries(cache.urls)
-    .map(([id, url]) => `--img-${id}: url('${url}');`)
+    .filter(([_, url]) => typeof url === "string" && url.length > 0)
+    .map(([id, url]) => {
+      // Encode characters that may break CSS
+      const safeUrl = encodeURI(url).replace(/'/g, "\\'");
+      return `--img-${id}: url('${safeUrl}');`;
+    })
     .join("\n");
-  style.innerText = `:root { ${rules} }`;
+
+  style.innerText = `:root {\n${rules}\n}`;
   document.head.appendChild(style);
 };
 
 export function App({ data }) {
   const [loaded, setLoaded] = useState(false);
-  const [isTop, setIsTop] = useState(false); // State to toggle the 'top' class
-  const [progress, setProgress] = useState(0); // State to track loading progress percentage
+  const [isTop, setIsTop] = useState(false);
+  const [progress, setProgress] = useState(0);
 
-  // Handler to toggle the 'top' class on click
   const handleSealClick = () => {
     setIsTop((prev) => !prev);
   };
@@ -67,14 +76,15 @@ export function App({ data }) {
           setProgress(percentage);
         },
       );
-      injectImageUrlsToCSS(GLOBAL_IMAGE_CACHE); // Expose URLs to CSS
+
+      injectImageUrlsToCSS(GLOBAL_IMAGE_CACHE); // ✅ Safe inject
       setLoaded(true);
     };
+
     loadCriticalImages();
   }, []);
 
-  // Calculate transform for the dot based on progress (assuming bar width is 200px, dot width is 20px)
-  const dotPosition = (progress / 100) * 180; // Adjust 180 based on bar width - dot width
+  const dotPosition = (progress / 100) * 180;
 
   return (
     <div id="root" class={`${isTop ? "default" : ""}`}>
@@ -87,8 +97,11 @@ export function App({ data }) {
             data={data}
             handleSealClick={handleSealClick}
           />
-
           <SectionMain isTop={isTop} handleSealClick={handleSealClick} />
+          <MusicPlayer />
+          <div class={`main-reload ${isTop ? "visible" : ""}`}>
+            <ReloadButton />
+          </div>
         </>
       )}
     </div>

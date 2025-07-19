@@ -3,8 +3,7 @@ import BlastImage from "./BlastImage";
 import SubSectionCover from "./SubSectionCover";
 import SubSectionIntro from "./SubSectionIntro";
 import SubSectionCountdown from "./SubSectionCountdown";
-import SubSectionWelcomeCocktail from "./SubSectionWelcomeCocktail";
-import SubSectionCeremonyLocation from "./SubSectionCeremonyLocation";
+import SubSectionEvents from "./SubSectionEvents";
 import SubSectionTimeline from "./SubSectionTimeline";
 import SubSectionImportantInfo from "./SubSectionImportantInfo";
 import SubSectionAccommodations from "./SubSectionAccommodations";
@@ -24,14 +23,13 @@ const SectionMain = ({ isTop, handleSealClick }: SectionMainProps) => {
       <SubSectionCover />
       <SubSectionIntro />
       <SubSectionCountdown />
-      <SubSectionWelcomeCocktail />
-      <SubSectionCeremonyLocation />
+      <SubSectionEvents />
       <SubSectionTimeline />
       <SubSectionImportantInfo />
+      <SubSectionGallery />
       <SubSectionAccommodations />
       <SubSectionGifts />
       <SubSectionExtendedTrip />
-      <SubSectionGallery />
       <SubSectionRSVP />
     </section>
   );

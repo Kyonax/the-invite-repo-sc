@@ -1,64 +1,121 @@
-.important-info-section {
-  background-color: #fffdf8;
-  padding: 2rem 1.5rem;
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
 
-  &__title {
+.important-info-section {
+  padding: 6rem 1rem;
+  text-align: left;
+
+  .invite-title {
+    margin-bottom: 4rem;
     text-align: center;
-    font-size: 2rem;
-    font-family: "Playfair Display", serif;
-    color: #a0522d;
-    margin-bottom: 2rem;
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
   }
 
-  &__details {
+  &__quote {
+    text-align: center;
+    font-style: italic;
+    font-size: var(--fs-200);
+    line-height: var(--fs-300);
+    color: var(--clr-primary-300);
+  }
+
+  &__title {
+    font-weight: 600;
+    color: var(--clr-primary-100);
+    margin-bottom: 0rem;
+  }
+
+  &__text {
+    font-size: var(--fs-200);
+    line-height: var(--fs-300);
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  &__group {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  &__dresscode,
   &__palette {
-    font-size: 1rem;
-    color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
-  &__quote {
-    font-style: italic;
-    color: #777;
-    font-size: 1rem;
-    padding: 1rem 0;
-    border-left: 4px solid #a0522d;
-    padding-left: 1rem;
-  }
+  .color-swatch {
+    position: relative;
 
-  &__colors {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.75rem;
-  }
+    &:first-child {
+      margin-left: 0;
+    }
 
-  .color-block {
-    background-color: var(--color);
-    color: #fff;
-    padding: 0.5rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+
+    &__circle {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background-color: var(--swatch-color);
+      border: 2px solid rgba(0, 0, 0, 0.05);
+      z-index: 2;
+    }
+
+    &__label {
+      font-size: var(--fs-100);
+      color: var(--clr-secondary-100);
+      font-weight: 500;
+      margin-top: 0.5rem;
+      white-space: nowrap;
+      text-transform: capitalize;
+    }
   }
 
-  &__link {
-    margin-top: 1rem;
-    text-align: center;
-    display: inline-block;
-    color: #a0522d;
-    font-weight: bold;
-    text-decoration: underline;
+  @include mixins.max-media-query(md) {
+    &__text {
+      max-width: 50%;
+    }
+
+    &__content {
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @include mixins.max-media-query(sm) {
+    padding: 3rem 1rem;
+    &__text {
+      max-width: 90%;
+    }
+
+    .invite-title {
+      margin-bottom: 3rem;
+    }
+
+    &__palette {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .color-swatch {
+      &__circle {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
   }
 }

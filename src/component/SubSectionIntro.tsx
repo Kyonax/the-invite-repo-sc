@@ -1,3 +1,5 @@
+import InviteTitle from "./InviteTitle";
+
 const SubSectionIntro = () => {
   return (
     <div class="second-section">
@@ -6,9 +8,12 @@ const SubSectionIntro = () => {
         de nuestro hogar, celebramos lo que la vida tejió con paciencia.
         Queremos que vengas a celebrar esta historia que apenas comienza.
       </p>
-      <h3 class="blessing-text">
-        <span>Bendición</span>Con la bendición de nuestros padres
-      </h3>
+
+      <InviteTitle
+        main="Con la bendición de nuestros padres"
+        background="Bendición"
+        className="blessing-text"
+      />
 
       <div class="blessing-parents">
         <div class="parents" style="text-align: left;">

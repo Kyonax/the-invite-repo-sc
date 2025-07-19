@@ -1,4 +1,5 @@
 import BlastImage from "./BlastImage";
+import InviteTitle from "./InviteTitle";
 
 const SubSectionCover = () => {
   return (
@@ -10,7 +11,7 @@ const SubSectionCover = () => {
         fetchpriority="high"
       />
       <h1 class="cover-names">
-        <span class="cover-wedding">Nuestra Boda</span> Sofia y Cristhian
+        <InviteTitle main="Nuestra Boda" background="Sofia y Cristhian" />
       </h1>
     </div>
   );

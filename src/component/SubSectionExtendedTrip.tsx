@@ -1,11 +1,24 @@
+import InviteTitle from "./InviteTitle";
 import "./scss/SubSectionExtendedTrip.scss";
+import DecorationImage from "./DecorationImage";
 
 const SubSectionExtendedTrip = () => {
   return (
     <div class="extended-trip-section">
-      <h2 class="extended-trip-section__title">
-        Extensión de la Boda: Cerros de Mavicure
-      </h2>
+      {/**
+       *
+       *<DecorationImage
+       *  img="OLIVE_DECO_DOWN_LEFT"
+       *  position="bottom-left"
+       *  maxWidth="50%" />
+       *
+       */}
+
+      <InviteTitle
+        main="Extensión de la Boda - Cerros de Mavicure"
+        background="Extension"
+      />
+
       <p class="extended-trip-section__intro">
         Más que una boda, queremos invitarte a vivir una experiencia
         inolvidable.
@@ -14,7 +27,7 @@ const SubSectionExtendedTrip = () => {
       <div class="extended-trip-section__details">
         <p>
           El <strong>sábado 28 de febrero de 2026</strong> a las{" "}
-          <strong>2:00 p.m.</strong>, saldremos juntos hacia los Cerros de
+          <strong>2:00 p.m</strong> saldremos juntos hacia los Cerros de
           Mavicure: un lugar sagrado, imponente y profundamente significativo
           para nosotros.
         </p>
@@ -26,11 +39,17 @@ const SubSectionExtendedTrip = () => {
 
         <h3>¿Qué incluye esta experiencia?</h3>
         <ul>
-          <li>🚤 Transporte fluvial (ida y regreso)</li>
-          <li>🧭 Guía local conocedor del territorio</li>
-          <li>🍽️ Cena comunitaria</li>
           <li>
-            🏕️ Alojamiento a elegir:
+            <span>🚤</span> Transporte fluvial (ida y regreso)
+          </li>
+          <li>
+            <span>🧭</span> Guía local conocedor del territorio
+          </li>
+          <li>
+            <span>🍽</span> Cena comunitaria
+          </li>
+          <li>
+            <span>🏕️</span> Alojamiento a elegir:
             <ul class="extended-trip-section__sublist">
               <li>Hamaca</li>
               <li>Camping</li>
@@ -40,9 +59,9 @@ const SubSectionExtendedTrip = () => {
         </ul>
 
         <p>
-          <strong>Regreso:</strong> domingo 1 de marzo en la tarde a Inírida.
+          <strong>Regreso:</strong> Domingo 1 de marzo en la Tarde.
           <br />
-          <strong>Estarías de vuelta en casa:</strong> lunes 2 de marzo.
+          <strong>Estarías de vuelta en casa:</strong> Lunes 2 de Marzo.
         </p>
 
         <p>

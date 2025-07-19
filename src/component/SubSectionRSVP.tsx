@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
 import familyData from "../data/families-invited.json";
 import "./scss/SubSectionRSVP.scss";
+import InviteTitle from "./InviteTitle";
 
 const SubSectionRSVP = () => {
   const [familyKey, setFamilyKey] = useState(null);
@@ -16,6 +17,7 @@ const SubSectionRSVP = () => {
   }, []);
 
   const [form, setForm] = useState({
+    attending: "",
     cocktail: "",
     ceremony: "",
     mavicure: "",
@@ -23,51 +25,47 @@ const SubSectionRSVP = () => {
   });
 
   const isFormValid = () =>
-    family?.text?.trim() && form.cocktail && form.ceremony && form.mavicure;
+    family?.text?.trim() &&
+    form.attending &&
+    form.cocktail &&
+    form.ceremony &&
+    form.mavicure;
 
   const handleChange = (field: string, value: string) => {
     setForm({ ...form, [field]: value });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     if (!isFormValid()) return;
 
-    const payload = {
-      familyKey,
-      familyName: family.text,
-      reserved: family.reserved,
-      cocktail: form.cocktail,
-      ceremony: form.ceremony,
-      mavicure: form.mavicure,
-      diet: form.diet || "",
+    const attendingFormatted = `${form.attending}/${family.reserved}`;
+
+    const formElement = document.createElement("form");
+    formElement.method = "POST";
+    formElement.target = "_blank";
+    formElement.action =
+      "https://script.google.com/macros/s/AKfycbzOh_A9m2wQMPNzJcNiw9RvZqhFwMnQ9hRAcixSUrryyWZj0T-vQgkM8tprbM0GAaqC/exec";
+
+    const addField = (name: string, value: string) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = value;
+      formElement.appendChild(input);
     };
 
-    console.log("Enviando a Google Sheets:", payload);
+    addField("familyKey", familyKey);
+    addField("familyName", family.text);
+    addField("attending", attendingFormatted); // 👈 Enviamos "2/3", "1/2", etc.
+    addField("cocktail", form.cocktail);
+    addField("ceremony", form.ceremony);
+    addField("mavicure", form.mavicure);
+    addField("diet", form.diet || "");
 
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxTZyidH3tMKjcForLLJ0p-0XTKQmMwLVukelom3a62N8u7iydcr-rwgYhOoSMhPGDH/exec",
-        {
-          method: "POST",
-          mode: "cors", // Importante para CORS
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams(payload).toString(),
-        },
-      );
+    document.body.appendChild(formElement);
+    formElement.submit();
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-
-      const text = await response.text();
-      console.log("Respuesta del servidor:", text);
-      alert("¡Asistencia confirmada con éxito!");
-    } catch (error) {
-      console.error("Error al enviar a Google Sheets:", error);
-      alert("Hubo un problema al enviar tu confirmación. Intenta nuevamente.");
-    }
+    alert("🎉 Tu confirmación fue enviada correctamente.");
   };
 
   if (!family) {
@@ -83,72 +81,95 @@ const SubSectionRSVP = () => {
 
   return (
     <section class="rsvp-section">
-      <h2 class="rsvp-title">Confirmación de Asistencia</h2>
-      <p class="rsvp-subtitle">
-        <strong>{family.text}</strong>
-      </p>
+      <div class="section-container">
+        <InviteTitle main="Confirmación de Asistencia" background="Rsvp Form" />
 
-      <form class="rsvp-form" onSubmit={(e) => e.preventDefault()}>
-        <label>
-          {isPlural
-            ? "¿Asistirán al coctel de bienvenida?"
-            : "¿Asistirás al coctel de bienvenida?"}
-          <select
-            value={form.cocktail}
-            onChange={(e) => handleChange("cocktail", e.currentTarget.value)}
-            required
+        <p class="rsvp-subtitle">
+          <strong>{family.text}</strong>
+        </p>
+
+        <form class="rsvp-form" onSubmit={(e) => e.preventDefault()}>
+          <label>
+            {isPlural
+              ? "¿Cuántas personas asistirán a la boda?"
+              : "¿Confirmas tu asistencia a la boda?"}
+            <select
+              value={form.attending}
+              onChange={(e) => handleChange("attending", e.currentTarget.value)}
+              required
+            >
+              <option value="">Selecciona una opción</option>
+              {Array.from({ length: family.reserved }, (_, i) => (
+                <option value={i + 1}>{i + 1}</option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            {isPlural
+              ? "¿Asistirán al coctel de bienvenida?"
+              : "¿Asistirás al coctel de bienvenida?"}
+            <select
+              value={form.cocktail}
+              onChange={(e) => handleChange("cocktail", e.currentTarget.value)}
+              required
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="yes">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <label>
+            {isPlural
+              ? "¿Asistirán a la ceremonia?"
+              : "¿Asistirás a la ceremonia?"}
+            <select
+              value={form.ceremony}
+              onChange={(e) => handleChange("ceremony", e.currentTarget.value)}
+              required
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="yes">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <label>
+            {isPlural
+              ? "¿Asistirán a los cerros del Mavicure?"
+              : "¿Asistirás a los cerros del Mavicure?"}
+            <select
+              value={form.mavicure}
+              onChange={(e) => handleChange("mavicure", e.currentTarget.value)}
+              required
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="yes">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <label>
+            {isPlural
+              ? "¿Tienen alguna restricción alimentaria?"
+              : "¿Tienes alguna restricción alimentaria?"}
+            <textarea
+              value={form.diet}
+              onInput={(e) => handleChange("diet", e.currentTarget.value)}
+              placeholder="Escribe aquí si tienes alguna..."
+            />
+          </label>
+
+          <button
+            type="submit"
+            disabled={!isFormValid()}
+            onClick={handleSubmit}
           >
-            <option value="">Selecciona una opción</option>
-            <option value="yes">Sí</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-
-        <label>
-          {isPlural
-            ? "¿Asistirán a la ceremonia?"
-            : "¿Asistirás a la ceremonia?"}
-          <select
-            value={form.ceremony}
-            onChange={(e) => handleChange("ceremony", e.currentTarget.value)}
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="yes">Sí</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-
-        <label>
-          {isPlural
-            ? "¿Asistirán a los cerros del Mavicure?"
-            : "¿Asistirás a los cerros del Mavicure?"}
-          <select
-            value={form.mavicure}
-            onChange={(e) => handleChange("mavicure", e.currentTarget.value)}
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="yes">Sí</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-
-        <label>
-          {isPlural
-            ? "¿Tienen alguna restricción alimentaria?"
-            : "¿Tienes alguna restricción alimentaria?"}
-          <textarea
-            value={form.diet}
-            onInput={(e) => handleChange("diet", e.currentTarget.value)}
-            placeholder="Escribe aquí si tienes alguna..."
-          />
-        </label>
-
-        <button type="submit" disabled={!isFormValid()} onClick={handleSubmit}>
-          Confirmar mi asistencia
-        </button>
-      </form>
+            Confirmar mi asistencia
+          </button>
+        </form>
+      </div>
     </section>
   );
 };

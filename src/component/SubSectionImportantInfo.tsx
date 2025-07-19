@@ -1,89 +1,77 @@
+import InviteTitle from "./InviteTitle";
 import "./scss/SubSectionImportantInfo.scss";
+
+const COLORS_MEN_EXCLUDED = [
+  { name: "Beige claro", hex: "#f5f5dc" },
+  { name: "Blanco", hex: "#ffffff" },
+];
+
+const COLORS_WOMEN_EXCLUDED = [{ name: "Verde Oliva", hex: "#808000" }];
+
+const COLORS_BRIDESMAIDS = [
+  { name: "Rust", hex: "#7E3717" },
+  { name: "Tant", hex: "#A9835C" },
+  { name: "Nut Brown", hex: "#5C3422" },
+  { name: "Dune", hex: "#A05035" },
+  { name: "Dark Red", hex: "#3D0A05" },
+  { name: "Toasted Caramel", hex: "#84592B" },
+];
+
+const ColorSwatchCircle = ({ name, hex }: { name: string; hex: string }) => (
+  <div className="color-swatch">
+    <div
+      className="color-swatch__circle"
+      style={{ "--swatch-color": hex } as React.CSSProperties}
+    />
+    <span className="color-swatch__label">{name}</span>
+  </div>
+);
 
 const SubSectionImportantInfo = () => {
   return (
-    <div class="important-info-section">
-      <h2 class="important-info-section__title">Información importante</h2>
+    <section className="important-info-section">
+      <InviteTitle main="Información importante" background="Important" />
 
-      <div class="important-info-section__content">
-        <div class="important-info-section__details">
-          <p class="important-info-section__dresscode">
-            <strong>Código de vestimenta:</strong> Elegante y fresco
+      <div className="important-info-section__content">
+        <div className="important-info-section__group">
+          <h3 className="important-info-section__title">Caballeros</h3>
+          <p className="important-info-section__text">
+            Todos los colores son bienvenidos, excepto los siguientes que están
+            reservados para las damas.
           </p>
-          <p class="important-info-section__palette">
-            <strong>Paleta sugerida:</strong> Verde esmeralda, verde oliva,
-            blanco puro, blanco hueso, beige claro o lino
+          <div className="important-info-section__palette">
+            {COLORS_MEN_EXCLUDED.map((color, idx) => (
+              <ColorSwatchCircle key={idx} {...color} />
+            ))}
+          </div>
+        </div>
+
+        <div className="important-info-section__group">
+          <h3 className="important-info-section__title">Damas</h3>
+          <p className="important-info-section__text">
+            Todos los colores son bienvenidos, excepto el siguiente reservado
+            para los caballeros.
           </p>
-
-          <div class="important-info-section__quote">
-            Cada invitado es una flor única en el jardín de nuestro amor.
+          <div className="important-info-section__palette">
+            {COLORS_WOMEN_EXCLUDED.map((color, idx) => (
+              <ColorSwatchCircle key={idx} {...color} />
+            ))}
           </div>
+        </div>
 
-          <div class="important-info-section__colors">
-            <div class="color-block" style="--color: #50c878">
-              Verde esmeralda
-            </div>
-            <div class="color-block" style="--color: #808000">
-              Verde oliva
-            </div>
-            <div class="color-block" style="--color: #fefefe">
-              Blanco puro
-            </div>
-            <div class="color-block" style="--color: #f5f5dc">
-              Blanco hueso
-            </div>
-            <div class="color-block" style="--color: #f5f5dc">
-              Beige claro
-            </div>
-            <div class="color-block" style="--color: #e2725b">
-              Terracota
-            </div>
-            <div class="color-block" style="--color: #7b002c">
-              Cabernet
-            </div>
-            <div class="color-block" style="--color: #a52a2a">
-              Auburn
-            </div>
-            <div class="color-block" style="--color: #b7410e">
-              Rust
-            </div>
-            <div class="color-block" style="--color: #e0b0ff">
-              Mauve
-            </div>
-            <div class="color-block" style="--color: #daafb9">
-              Dusty Rose
-            </div>
-            <div class="color-block" style="--color: #f4c2c2">
-              Melocotón tenue
-            </div>
-            <div class="color-block" style="--color: #e1ad01">
-              Amarillo mostaza
-            </div>
-            <div class="color-block" style="--color: #6e7f80">
-              Lavanda seco
-            </div>
-            <div class="color-block" style="--color: #005f73">
-              Azul petróleo
-            </div>
-            <div class="color-block" style="--color: #800080">
-              Morado
-            </div>
-            <div class="color-block" style="--color: #ff00ff">
-              Fucsia
-            </div>
+        <div className="important-info-section__group">
+          <h3 className="important-info-section__title">Damas de honor</h3>
+          <p className="important-info-section__text">
+            Tonos que han sido reservados especialmente para ustedes.
+          </p>
+          <div className="important-info-section__palette">
+            {COLORS_BRIDESMAIDS.map((color, idx) => (
+              <ColorSwatchCircle key={idx} {...color} />
+            ))}
           </div>
-
-          <a
-            class="important-info-section__link"
-            href="https://pin.it/2PboLuRFQ"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ver inspiración en Pinterest
-          </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

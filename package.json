@@ -15,6 +15,7 @@
 		"preact": "^10.25.3",
 		"preact-iso": "^2.9.2",
 		"preact-render-to-string": "^6.5.13",
+		"preact-youtube": "^0.0.1",
 		"text-to-svg": "^3.1.5"
 	},
 	"devDependencies": {
@@ -31,7 +32,8 @@
 		"sharp": "^0.34.2",
 		"typescript": "^5.8.3",
 		"vite": "^6.0.4",
-		"vite-imagetools": "^7.1.0"
+		"vite-imagetools": "^7.1.0",
+		"vite-plugin-svgr": "^4.3.0"
 	},
 	"eslintConfig": {
 		"extends": "preact"

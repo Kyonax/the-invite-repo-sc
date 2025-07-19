@@ -1,8 +1,17 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
 .gallery-viewport {
-  background-color: #fef9f4;
-  padding: 2rem 0;
   display: flex;
   justify-content: center;
+  margin-bottom: 3rem;
+  padding: 6rem 0rem;
+  padding-bottom: 3rem;
+
+  @include mixins.max-media-query(sm) {
+    padding: 3rem 0rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .gallery-section {
@@ -10,6 +19,14 @@
   position: relative;
   max-width: 100%;
   overflow: hidden;
+
+  .invite-title {
+    margin-bottom: 6rem;
+
+    &__background {
+      transform: translateY(-1.5rem);
+    }
+  }
 
   &__title {
     margin-bottom: 1rem;
@@ -30,12 +47,17 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--clr-primary-100);
+    color: var(--clr-cream-brown-50);
     border: none;
-    font-size: 2rem;
-    padding: 0.5rem 1rem;
+    font-size: var(--fs-300);
+    padding: 0.25rem 0.5rem;
     cursor: pointer;
     z-index: 10;
+
+    &:hover {
+      background-color: var(--clr-primary-200);
+    }
 
     &:disabled {
       opacity: 0.3;
@@ -105,6 +127,12 @@
       height: 100%;
       object-fit: contain;
       display: block;
+    }
+  }
+
+  @include mixins.max-media-query(sm) {
+    .invite-title {
+      margin-bottom: 3rem;
     }
   }
 }

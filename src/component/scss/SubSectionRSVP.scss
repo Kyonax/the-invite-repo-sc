@@ -1,27 +1,40 @@
-.rsvp-section {
-  background-color: #fff8f3;
-  padding: 2rem;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 1rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
 
-  .rsvp-title {
+.rsvp-section {
+  background-color: var(--clr-primary-100);
+  width: 100%;
+  padding: 6rem 1rem;
+  margin: auto;
+  margin-top: 3rem;
+  color: var(--clr-cream-brown-50);
+
+  .invite-title {
+    margin-bottom: 0rem;
+    --invite-title-color: var(--clr-cream-brown-50);
+    --invite-stroke-back: 2px;
+  }
+
+  .section-container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .rsvp-subtitle {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    transform: translateY(-1.25rem);
   }
 
   .rsvp-form {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    padding: 2rem 1rem;
 
     label {
       display: flex;
       flex-direction: column;
       font-weight: 500;
-      color: #333;
 
       input,
       select,
@@ -29,14 +42,15 @@
         margin-top: 0.5rem;
         padding: 0.75rem;
         border-radius: 0.5rem;
-        border: 1px solid #ccc;
-        font-size: 1rem;
-        background-color: #fff;
+        border: 1px solid var(--clr-cream-brown-50);
+        font-size: var(--fs-200);
+        background-color: var(--clr-cream-brown-50);
+        color: var(--clr-primary-100);
       }
 
       textarea {
         resize: vertical;
-        min-height: 80px;
+        min-height: 90px;
       }
     }
 
@@ -44,22 +58,38 @@
       align-self: center;
       margin-top: 1rem;
       padding: 0.75rem 2rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 2rem;
-      background-color: #dc9c77;
-      color: white;
+      font-size: var(--fs-100);
+      border: 1px solid var(--clr-cream-brown-100);
+      border-radius: 6px;
+      color: var(--clr-secondary-100);
       cursor: pointer;
       transition: background 0.3s;
+      background-color: var(--clr-cream-brown-100);
+      font-weight: 600;
 
       &:disabled {
-        background-color: #e5c3ae;
+        border: 1px solid var(--clr-primary-400);
+        background-color: var(--clr-primary-100);
+        color: var(--clr-primary-400);
         cursor: not-allowed;
       }
 
       &:hover:not(:disabled) {
-        background-color: #ce895f;
+        background-color: var(--clr-cream-brown-200);
+        border: 1px solid var(--clr-primary-200);
       }
+    }
+  }
+
+  @include mixins.max-media-query(sm) {
+    padding: 3rem 0rem;
+
+    .invite-title {
+      --invite-stroke-back: 1px;
+    }
+
+    .rsvp-form {
+      padding: 1rem;
     }
   }
 }

@@ -3,6 +3,7 @@ import BlastImage from "./BlastImage";
 import weddingVideo from "../assets/backup/IMG_7519.MOV";
 
 import "./scss/SubSectionGallery.scss";
+import InviteTitle from "./InviteTitle";
 
 const images = [
   "256A6761",
@@ -57,7 +58,7 @@ const SubSectionGallery = () => {
   return (
     <section class="gallery-viewport">
       <div class="gallery-section">
-        <h2 class="gallery-section__title">Nuestros Recuerdos</h2>
+        <InviteTitle main="Nuestros Recuerdos" background="Gallery" />
 
         <div class="gallery-section__carousel-wrapper">
           <button

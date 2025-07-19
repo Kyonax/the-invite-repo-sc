@@ -1,33 +1,40 @@
-.extended-trip-section {
-  background-color: #f7f4ef;
-  padding: 3rem 1.5rem;
-  color: #3c3c3c;
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
 
-  &__title {
-    font-size: 2rem;
-    font-family: "Playfair Display", serif;
-    color: #5c3b2e;
-    margin-bottom: 1rem;
-    text-align: center;
+.extended-trip-section {
+  position: relative;
+  padding: 6rem 1.5rem;
+
+  .invite-title {
+    &__background {
+      transform: translateY(-2rem);
+    }
   }
 
   &__intro {
-    font-size: 1.2rem;
+    font-size: var(--fs-300);
+    line-height: var(--fs-400);
     text-align: center;
     margin-bottom: 2rem;
-    font-weight: 500;
+    color: var(--clr-primary-100);
   }
 
   &__details {
     max-width: 700px;
     margin: 0 auto;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: var(--fs-200);
+    line-height: var(--fs-300);
+
+    strong {
+      color: var(--clr-primary-100);
+      margin-right: 0.25rem;
+      margin-left: 0.25rem;
+    }
 
     h3 {
       margin-top: 2rem;
-      font-size: 1.3rem;
-      color: #4c3b3b;
+      font-size: var(--fs-300);
+      color: var(--clr-primary-100);
     }
 
     ul {
@@ -36,6 +43,9 @@
 
       li {
         margin-bottom: 0.5rem;
+        span {
+          margin-right: 0.25rem;
+        }
       }
     }
 
@@ -53,5 +63,9 @@
     p {
       margin-bottom: 1.2rem;
     }
+  }
+
+  @include mixins.max-media-query(sm) {
+    padding: 3rem 1.5rem;
   }
 }

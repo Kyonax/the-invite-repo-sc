@@ -509,6 +509,15 @@ body {
   }
 }
 
+.main-reload {
+  opacity: 0;
+  transition: opacity 0.5s ease-in 1.8s;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
 .main {
   opacity: 0;
   position: relative;
@@ -537,10 +546,10 @@ body {
       overflow: hidden;
 
       img {
-        margin-top: 3rem;
         width: 100%;
         display: block;
         position: relative;
+        margin-top: 3rem;
         z-index: 1;
       }
     }
@@ -553,49 +562,19 @@ body {
     justify-items: center;
     width: 100%;
     text-align: center;
-    font-size: var(--fs-200);
-    line-height: var(--fs-300);
-    margin: 6rem 0rem;
+    font-size: var(--fs-400);
+    line-height: var(--fs-500);
+    margin: 0rem 0rem;
     margin-top: 4rem;
-    letter-spacing: 0rem;
 
     p {
-      max-width: 600px;
+      max-width: 650px;
     }
 
     .wedding-phrase {
       font-style: italic;
       margin: 6rem 0rem;
       margin-top: 3rem;
-    }
-
-    .blessing-text {
-      color: var(--clr-primary-300);
-      position: relative;
-      font-size: var(--fs-400);
-
-      span {
-        font-family: "Astutely";
-        position: absolute;
-        width: 100%;
-        justify-items: center;
-        left: 0;
-        top: 0;
-        opacity: 0.2;
-        transform: translateY(-1.3rem);
-
-        font-weight: 400; // make sure you’ve loaded 600
-        font-size: clamp(1rem, 20vw, 8.8rem);
-        line-height: clamp(1rem, 20vw, 7rem);
-
-        // outline only
-        color: transparent; // hide any fill
-        -webkit-text-stroke-width: 1px; // your stroke thickness
-        -webkit-text-stroke-color: var(--clr-primary-300); // stroke color
-
-        // ensure the browser doesn’t fill in the characters
-        -webkit-text-fill-color: transparent;
-      }
     }
 
     .blessing-parents {
@@ -610,17 +589,12 @@ body {
       .parents {
         padding: 1.5rem;
         display: grid;
-        font-family: "DMSerif";
-        font-size: var(--fs-200);
+        font-size: var(--fs-300);
+        line-height: var(--fs-400);
 
         &__from {
           color: var(--clr-secondary-100);
-          font-size: var(--fs-100);
-        }
-
-        span > span {
-          font-family: "Peristiwa";
-          font-size: var(--fs-500);
+          font-size: var(--fs-200);
         }
       }
     }
@@ -687,11 +661,17 @@ body {
     display: grid;
     justify-items: center;
     width: 100%;
+    height: 38rem;
     text-align: center;
     font-size: var(--fs-500);
     margin: 6rem 0rem;
     letter-spacing: 0rem;
     padding-bottom: 3rem;
+    overflow: hidden;
+
+    .invite-title {
+      --invite-stroke-back: 2px;
+    }
 
     picture {
       width: 100%;
@@ -716,44 +696,40 @@ body {
       width: 100%;
       height: 100%;
       color: var(--clr-cream-brown-50);
-      font-family: "DMSerif";
       font-size: var(--fs-400);
+      font-family: "DMSerif";
+
       z-index: 2;
 
-      &__title {
-        width: 100%;
-        height: fit-content;
-        transform: translateY(9rem);
-
-        span {
-          font-family: "Astutely";
-          position: absolute;
-          width: 100%;
-          justify-items: center;
-          left: 0;
-          top: 0;
-          opacity: 0.5;
-          transform: translateY(-1.9rem);
-
-          font-weight: 400; // make sure you’ve loaded 600
-          font-size: clamp(1rem, 20vw, 8.8rem);
-          line-height: clamp(1rem, 20vw, 7rem);
-
-          // outline only
-          color: transparent; // hide any fill
-          -webkit-text-stroke-width: 1px; // your stroke thickness
-          -webkit-text-stroke-color: var(--clr-cream-brown-50); // stroke color
-
-          // ensure the browser doesn’t fill in the characters
-          -webkit-text-fill-color: transparent;
-        }
+      .invite-title {
+        transform: translateY(12rem);
+        z-index: 2;
+        --invite-title-color: var(--clr-cream-brown-50);
       }
 
       .counter {
         position: absolute;
         width: 100%;
-        bottom: 0;
-        transform: translateY(-12rem);
+        top: 0;
+        transform: translateY(12rem);
+
+        z-index: 3;
+      }
+    }
+
+    @include mixins.max-media-query(md) {
+      height: 30rem;
+
+      .counter-text {
+        .invite-title {
+          transform: translateY(9rem);
+          --invite-font-small: var(--fs-200);
+          --invite-font-large: clamp(1rem, 16vw, 8.8rem);
+        }
+
+        .counter {
+          transform: translateY(8rem);
+        }
       }
     }
 
@@ -761,12 +737,26 @@ body {
       margin-top: 0rem;
       padding: 3rem 0rem;
       padding-bottom: 0rem;
+      height: 17rem;
+      margin-bottom: 3rem;
 
       .counter-text {
-        &__title {
-          span {
-            opacity: 0.4;
-            transform: translateY(-1.1rem);
+        .invite-title {
+          transform: translateY(6rem);
+          --invite-stroke-back: 1px;
+        }
+
+        .counter {
+          transform: translateY(6rem);
+          height: 75%;
+
+          .calendar-actions {
+            position: absolute;
+            transform: translateY(-2rem);
+            left: 0rem;
+            right: 0rem;
+            margin: auto;
+            bottom: 0rem;
           }
         }
       }
@@ -774,50 +764,18 @@ body {
   }
 
   .cover-names {
-    // positioning
     position: absolute;
-    top: 0;
     margin-top: 4rem;
+    top: 0;
     width: 90%;
-    text-align: center;
 
-    // typography
-    font-family: "Astutely", cursive;
-    font-weight: 400; // make sure you’ve loaded 600
-    font-size: clamp(1rem, 18vw, 8.8rem);
-    line-height: clamp(1rem, 18vw, 7rem);
-
-    // outline only
-    color: transparent; // hide any fill
-    -webkit-text-stroke-width: 1px; // your stroke thickness
-    -webkit-text-stroke-color: var(--clr-primary-300); // stroke color
-
-    // ensure the browser doesn’t fill in the characters
-    -webkit-text-fill-color: transparent;
-    z-index: 2;
-
-    .cover-wedding {
-      text-align: center;
-      width: 100%;
-      top: 0;
-      left: 0;
-      font-size: var(--fs-300);
-      transform: translateY(-1.5rem);
-      position: absolute;
-      color: var(--clr-primary-300);
-      font-family: "DMSerif";
-      -webkit-text-fill-color: var(--clr-primary-300);
-      -webkit-text-stroke-width: 0px; // your stroke thickness;
-      z-index: 1;
+    .invite-title {
+      --invite-stroke-back: 1.5px;
     }
 
     @include mixins.max-media-query(sm) {
-      margin-top: 1.5rem;
-      -webkit-text-stroke-width: 0.5px; // your stroke thickness
-
-      .cover-wedding {
-        font-size: var(--fs-100);
-        transform: translateY(-0.5rem);
+      .invite-title {
+        --invite-stroke-back: 1px;
       }
     }
   }
@@ -888,13 +846,24 @@ body {
   padding: 0.5rem 0rem;
 }
 
-.calendar-button:hover {
-  background-color: var(--clr-primary-300);
-  transform: translateY(-2px);
-}
+.calendar-button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--clr-cream-brown-50);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 
-.calendar-button:active {
-  transform: translateY(0);
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--clr-cream-brown-50);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .icon-google,
