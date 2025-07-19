@@ -12,12 +12,12 @@ const MusicPlayer = () => {
       const player = new window.YT.Player(playerRef.current, {
         height: "0",
         width: "0",
-        videoId: "jIaFQNCqmBc",
+        videoId: "Y8LBfMGVF28",
         playerVars: {
           autoplay: 0,
           mute: 0,
           loop: 1,
-          playlist: "jIaFQNCqmBc",
+          playlist: "Y8LBfMGVF28",
         },
         events: {
           onReady: (e) => setYTPlayer(e.target),
