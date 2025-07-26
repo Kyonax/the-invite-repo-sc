@@ -9,6 +9,11 @@
   margin-top: 3rem;
   color: var(--clr-cream-brown-50);
 
+  .rsvp-subtitle,
+  .rsvp-form {
+    opacity: 0;
+  }
+
   .invite-title {
     margin-bottom: 0rem;
     --invite-title-color: var(--clr-cream-brown-50);

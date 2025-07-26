@@ -29,7 +29,6 @@ const SubSectionAccommodations = () => {
         description="Excelente opción para grupos y familias"
         phone="3225233545"
         web="https://www.tripadvisor.co/Hotel_Review-g3493976-d8474776-Reviews-La_Cabana_Guainiana-Inirida_Guainia_Department.html"
-        price="$203.000 por noche aprox."
       />
 
       <AccommodationItem
@@ -39,7 +38,6 @@ const SubSectionAccommodations = () => {
         description="Ubicación central, cómodo y accesible"
         phone="3026065093"
         web="https://www.tripadvisor.co/Hotel_Review-g3493976-d12496940-Reviews-Hotel_Orinoco_Real-Inirida_Guainia_Department.html"
-        price="$130.000 por noche aprox."
       />
     </section>
   );

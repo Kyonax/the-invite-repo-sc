@@ -84,11 +84,15 @@ const SubSectionRSVP = () => {
       <div class="section-container">
         <InviteTitle main="Confirmación de Asistencia" background="Rsvp Form" />
 
-        <p class="rsvp-subtitle">
+        <p data-animate="in-place" class="rsvp-subtitle">
           <strong>{family.text}</strong>
         </p>
 
-        <form class="rsvp-form" onSubmit={(e) => e.preventDefault()}>
+        <form
+          data-animate="in-place"
+          class="rsvp-form"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <label>
             {isPlural
               ? "¿Cuántas personas asistirán a la boda?"

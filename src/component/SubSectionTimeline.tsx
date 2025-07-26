@@ -11,24 +11,24 @@ interface TimelineEvent {
 const leftEvents: TimelineEvent[] = [
   { time: "", title: "", icon: "" },
   { time: "", title: "", icon: "" },
-  { time: "17:00 AM", title: "Photos", icon: "SvgCamera" },
+  { time: "17:00", title: "fotos", icon: "SvgCamera" },
   { time: "", title: "", icon: "" },
-  { time: "19:30 PM", title: "Dessert", icon: "SvgDessert" },
+  { time: "19:30", title: "Postre", icon: "SvgDessert" },
   { time: "", title: "", icon: "" },
-  { time: "21:00 PM", title: "First Dance", icon: "SvgFirstDance" },
+  { time: "21:00", title: "Primer baile", icon: "SvgFirstDance" },
   { time: "", title: "", icon: "" },
-  { time: "2:00 AM", title: "Carriages Home", icon: "SvgFireworks" },
+  { time: "2:00", title: "Regreso a casa", icon: "SvgFireworks" },
   { time: "", title: "", icon: "" },
 ];
 
 const rightEvents: TimelineEvent[] = [
-  { time: "15:30 PM", title: "Wedding Ceremony", icon: "SvgWeddingCeremony" },
+  { time: "15:30", title: "Ceremonia de boda", icon: "SvgWeddingCeremony" },
   { time: "", title: "", icon: "" },
-  { time: "18:30 PM", title: "Wedding Lunch", icon: "SvgLunch" },
+  { time: "18:30", title: "Banquete de boda", icon: "SvgLunch" },
   { time: "", title: "", icon: "" },
-  { time: "20:00 PM", title: "Cocktail Hour", icon: "SvgCocktail" },
+  { time: "20:00", title: "Cóctel", icon: "SvgCocktail" },
   { time: "", title: "", icon: "" },
-  { time: "23:00 PM", title: "Crazy Hour", icon: "SvgCrazyHour" },
+  { time: "23:00", title: "Hora loca", icon: "SvgCrazyHour" },
   { time: "", title: "", icon: "" },
 ];
 
@@ -45,8 +45,13 @@ const SubSectionTimeline = () => {
           <div class="timeline__column timeline__column--left">
             {leftEvents.map((event, index) => (
               <div class="timeline__item" key={`left-${index}`}>
-                <SvgIcon name={event.icon} />
-                <div class="timeline__text timeline__text--left">
+                <div data-animate="in-place" class="timeline__icon">
+                  <SvgIcon name={event.icon} />
+                </div>
+                <div
+                  data-animate="left"
+                  class="timeline__text timeline__text--left"
+                >
                   <div class="timeline__time">{event.time}</div>
                   <div class="timeline__title">{event.title}</div>
                 </div>
@@ -57,8 +62,13 @@ const SubSectionTimeline = () => {
           <div class="timeline__column timeline__column--right">
             {rightEvents.map((event, index) => (
               <div class="timeline__item" key={`right-${index}`}>
-                <SvgIcon name={event.icon} />
-                <div class="timeline__text timeline__text--right">
+                <div data-animate="in-place" class="timeline__icon">
+                  <SvgIcon name={event.icon} />
+                </div>
+                <div
+                  data-animate="right"
+                  class="timeline__text timeline__text--right"
+                >
                   <div class="timeline__time">{event.time}</div>
                   <div class="timeline__title">{event.title}</div>
                 </div>
@@ -66,7 +76,7 @@ const SubSectionTimeline = () => {
             ))}
           </div>
 
-          <div class="timeline__vertical-line"></div>
+          <div data-animate="in-place" class="timeline__vertical-line"></div>
         </div>
       </section>
     </div>

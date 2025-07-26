@@ -7,6 +7,7 @@
   color: var(--clr-primary-100);
 
   &__icon {
+    opacity: 0;
     margin-bottom: 2rem;
 
     svg {
@@ -14,6 +15,13 @@
       height: 6rem;
       color: var(--clr-secondary-100);
     }
+  }
+
+  &__place,
+  &__description,
+  &__date,
+  &__button {
+    opacity: 0;
   }
 
   &__place,
@@ -74,4 +82,8 @@
       padding: 0.5rem 1rem;
     }
   }
+}
+
+.event-item:last-child {
+  margin-bottom: 0rem;
 }

@@ -539,6 +539,14 @@ body {
     display: grid;
     justify-items: center;
 
+    .invite-title {
+      transform: translateY(-1rem);
+
+      &__background {
+        transform: translateY(-1.5rem);
+      }
+    }
+
     picture {
       width: 100%;
       position: relative;
@@ -551,6 +559,12 @@ body {
         position: relative;
         margin-top: 3rem;
         z-index: 1;
+      }
+    }
+
+    @include mixins.max-media-query(sm) {
+      .invite-title {
+        transform: translateY(-3rem);
       }
     }
   }
@@ -572,6 +586,7 @@ body {
     }
 
     .wedding-phrase {
+      opacity: 0;
       font-style: italic;
       margin: 6rem 0rem;
       margin-top: 3rem;
@@ -587,6 +602,7 @@ body {
       line-height: var(--fs-500);
 
       .parents {
+        opacity: 0;
         padding: 1.5rem;
         display: grid;
         font-size: var(--fs-300);
@@ -609,8 +625,8 @@ body {
       }
 
       .blessing-parents {
-        grid-template-columns: auto;
-        margin-top: 1.2rem;
+        // grid-template-columns: auto;
+        // margin-top: 1.2rem;
       }
     }
   }
@@ -673,6 +689,10 @@ body {
       --invite-stroke-back: 2px;
     }
 
+    .image-section {
+      opacity: 0;
+    }
+
     picture {
       width: 100%;
       position: relative;
@@ -708,6 +728,7 @@ body {
       }
 
       .counter {
+        opacity: 0;
         position: absolute;
         width: 100%;
         top: 0;
@@ -723,7 +744,6 @@ body {
       .counter-text {
         .invite-title {
           transform: translateY(9rem);
-          --invite-font-small: var(--fs-200);
           --invite-font-large: clamp(1rem, 16vw, 8.8rem);
         }
 
@@ -791,6 +811,10 @@ body {
   width: 100%;
   align-items: center;
   justify-items: center;
+
+  .countdown-display {
+    margin-bottom: 1rem;
+  }
 
   @include mixins.max-media-query(sm) {
     .countdown-display {
@@ -910,5 +934,88 @@ body {
 
   from {
     opacity: 0;
+  }
+}
+
+// fade-in.scss
+
+[data-animate].animate-in {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.6s;
+}
+
+[data-animate="in-place"].animate-in {
+  animation-name: fadeInInPlace;
+}
+
+[data-animate="up"].animate-in {
+  animation-name: fadeInUp;
+}
+
+[data-animate="down"].animate-in {
+  animation-name: fadeInDown;
+}
+
+[data-animate="left"].animate-in {
+  animation-name: fadeInLeft;
+}
+
+[data-animate="right"].animate-in {
+  animation-name: fadeInRight;
+}
+
+@keyframes fadeInInPlace {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

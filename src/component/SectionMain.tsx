@@ -24,8 +24,8 @@ const SectionMain = ({ isTop, handleSealClick }: SectionMainProps) => {
       <SubSectionIntro />
       <SubSectionCountdown />
       <SubSectionEvents />
-      <SubSectionTimeline />
       <SubSectionImportantInfo />
+      <SubSectionTimeline />
       <SubSectionGallery />
       <SubSectionAccommodations />
       <SubSectionGifts />

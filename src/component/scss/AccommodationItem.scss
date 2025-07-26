@@ -8,6 +8,12 @@
   margin-bottom: 4rem;
   color: var(--clr-primary-100);
 
+  &__icon,
+  &__description,
+  &__contact {
+    opacity: 0;
+  }
+
   &__icon {
     margin-bottom: 1rem;
 

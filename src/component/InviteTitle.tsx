@@ -14,7 +14,7 @@ const InviteTitle = ({
   children,
 }: InviteTitleProps) => {
   return (
-    <h3 class={`invite-title ${className}`}>
+    <h3 data-animate="in-place" class={`invite-title ${className}`}>
       <span class="invite-title__background">{background}</span>
       {main}
       {children}

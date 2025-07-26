@@ -5,6 +5,22 @@
   position: relative;
   padding: 6rem 1.5rem;
 
+  &__intro,
+  &__icon,
+  &__details {
+    opacity: 0;
+  }
+
+  &__icon {
+    text-align: center;
+
+    svg {
+      width: 12rem;
+      height: 6rem;
+      color: var(--clr-secondary-100);
+    }
+  }
+
   .invite-title {
     &__background {
       transform: translateY(-2rem);
@@ -67,5 +83,14 @@
 
   @include mixins.max-media-query(sm) {
     padding: 3rem 1.5rem;
+
+    &__icon {
+      margin-bottom: 1.5rem;
+
+      svg {
+        width: 9rem;
+        height: 3rem;
+      }
+    }
   }
 }

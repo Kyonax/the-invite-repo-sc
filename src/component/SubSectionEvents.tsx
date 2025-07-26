@@ -10,7 +10,7 @@ const SubSectionEvents = () => {
         background="Welcome Cocktail"
         place="El Mirador Guainiano"
         date="26 de febrero de 2026 - 17:00 PM"
-        locationUrl="https://maps.google.com/?q=El+Mirador+Guainiano"
+        locationUrl="https://maps.app.goo.gl/A1MkEmT5xp4yi2a19"
       />
 
       <EventItem
@@ -29,7 +29,6 @@ const SubSectionEvents = () => {
         description="Prepárate para disfrutar sin preocupaciones"
         background="Dress Code"
         place="Smart Cocktail"
-        date="*Blanco y similares se reservan para la Novia"
         locationUrl="https://pin.it/2PboLuRFQ"
         locationText="Ver inspiración en Pinterest"
       />

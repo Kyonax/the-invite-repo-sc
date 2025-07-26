@@ -3,7 +3,7 @@ import InviteTitle from "./InviteTitle";
 const SubSectionIntro = () => {
   return (
     <div class="second-section">
-      <p class="wedding-phrase">
+      <p class="wedding-phrase" data-animate="in-place">
         Donde el río abraza la selva, floreció nuestro amor. Hoy, en el corazón
         de nuestro hogar, celebramos lo que la vida tejió con paciencia.
         Queremos que vengas a celebrar esta historia que apenas comienza.
@@ -16,26 +16,15 @@ const SubSectionIntro = () => {
       />
 
       <div class="blessing-parents">
-        <div class="parents" style="text-align: left;">
+        <div data-animate="left" class="parents" style="text-align: left;">
           <span class="parents__from">Padres de la Novia</span>
-          <span>
-            <span>N</span>elson <span>O</span>swaldo <span>R</span>
-            amírez <span>A</span>ristizábal
-          </span>
-          <span>
-            <span>Y</span>olima <span>R</span>oció <span>C</span>ruz{" "}
-            <span>V</span>elásquez
-          </span>
+          <span>Nelson Ramírez</span>
+          <span>Yolima Cruz</span>
         </div>
-        <div class="parents" style="text-align: right;">
+        <div data-animate="right" class="parents" style="text-align: right;">
           <span class="parents__from">Padres del Novio</span>
-          <span>
-            <span>M</span>anuel <span>G</span>uillermo <span>T</span>
-            apia <span>Q</span>uintana
-          </span>
-          <span>
-            <span>G</span>ladys <span>P</span>áez <span>Q</span>uintero
-          </span>
+          <span>Manuel Tapia</span>
+          <span>Gladys Páez</span>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ const SubSectionCover = () => {
         fetchpriority="high"
       />
       <h1 class="cover-names">
-        <InviteTitle main="Nuestra Boda" background="Sofia y Cristhian" />
+        <InviteTitle main="Nuestra Boda" background="Sofía y Cristhian" />
       </h1>
     </div>
   );

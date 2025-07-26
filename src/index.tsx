@@ -1,6 +1,7 @@
 import { hydrate, prerender as ssr } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
 import { preloadImages, GLOBAL_IMAGE_CACHE } from "./util/preload-images.util";
+import { setupFadeInOnScroll } from "./util/setup-fade-in.util";
 
 import Preloader from "./component/Preloader";
 import SectionEnvelope from "./component/SectionEnvelope";
@@ -65,6 +66,10 @@ export function App({ data }) {
   const handleSealClick = () => {
     setIsTop((prev) => !prev);
   };
+
+  useEffect(() => {
+    setupFadeInOnScroll();
+  }, []);
 
   useEffect(() => {
     const loadCriticalImages = async () => {

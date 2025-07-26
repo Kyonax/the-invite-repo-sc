@@ -7,17 +7,19 @@ const SubSectionCountdown = () => {
     <div class="fourth-section">
       <div class="counter-text">
         <InviteTitle main="Aparta la Fecha" background="Save the Date" />
-        <div class="counter">
+        <div data-animate="in-place" class="counter">
           <Countdown />
         </div>
       </div>
 
-      <BlastImage
-        img="IMG_TRANSITION_ONE"
-        className="transition-image"
-        alt="Nos Casamos - Transition Image"
-        fetchpriority="high"
-      />
+      <div class="image-section" data-animate="up">
+        <BlastImage
+          img="IMG_TRANSITION_ONE"
+          className="transition-image"
+          alt="Nos Casamos - Transition Image"
+          fetchpriority="high"
+        />
+      </div>
     </div>
   );
 };

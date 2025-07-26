@@ -1,62 +1,35 @@
 import InviteTitle from "./InviteTitle";
 import "./scss/SubSectionExtendedTrip.scss";
-import DecorationImage from "./DecorationImage";
+import SvgIcon from "./SvgIcon";
 
 const SubSectionExtendedTrip = () => {
   return (
     <div class="extended-trip-section">
-      {/**
-       *
-       *<DecorationImage
-       *  img="OLIVE_DECO_DOWN_LEFT"
-       *  position="bottom-left"
-       *  maxWidth="50%" />
-       *
-       */}
-
       <InviteTitle
         main="Extensión de la Boda - Cerros de Mavicure"
         background="Extension"
       />
 
-      <p class="extended-trip-section__intro">
+      <p data-animate="in-place" class="extended-trip-section__intro">
         Más que una boda, queremos invitarte a vivir una experiencia
         inolvidable.
       </p>
 
-      <div class="extended-trip-section__details">
+      <div data-animate="in-place" class="extended-trip-section__icon">
+        <SvgIcon name="SvgCerros" />
+      </div>
+
+      <div data-animate="in-place" class="extended-trip-section__details">
         <p>
-          El <strong>sábado 28 de febrero de 2026</strong> a las{" "}
-          <strong>2:00 p.m</strong> saldremos juntos hacia los Cerros de
-          Mavicure: un lugar sagrado, imponente y profundamente significativo
-          para nosotros.
+          El <strong>sábado 28 de febrero de 2026</strong> saldremos juntos
+          hacia los Cerros de Mavicure: un lugar sagrado, imponente y
+          profundamente significativo para nosotros.
         </p>
         <p>
           Esta travesía es opcional, pero representa una extensión espiritual de
           nuestra celebración. Es una oportunidad para compartir contigo la
           esencia del Guainía: su tierra, su energía y su gente.
         </p>
-
-        <h3>¿Qué incluye esta experiencia?</h3>
-        <ul>
-          <li>
-            <span>🚤</span> Transporte fluvial (ida y regreso)
-          </li>
-          <li>
-            <span>🧭</span> Guía local conocedor del territorio
-          </li>
-          <li>
-            <span>🍽</span> Cena comunitaria
-          </li>
-          <li>
-            <span>🏕️</span> Alojamiento a elegir:
-            <ul class="extended-trip-section__sublist">
-              <li>Hamaca</li>
-              <li>Camping</li>
-              <li>Cabaña</li>
-            </ul>
-          </li>
-        </ul>
 
         <p>
           <strong>Regreso:</strong> Domingo 1 de marzo en la Tarde.
@@ -73,7 +46,7 @@ const SubSectionExtendedTrip = () => {
         <p>
           Para quienes estén interesados, se recogerá una cuota por persona
           según el tipo de alojamiento elegido. Los valores y detalles se
-          informarán más adelante.
+          informarán más adelante en un grupo de <strong>WhatsApp.</strong>
         </p>
       </div>
     </div>

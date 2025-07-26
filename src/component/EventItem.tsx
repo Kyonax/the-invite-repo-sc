@@ -24,17 +24,24 @@ const EventItem = ({
   locationText,
 }: Props) => (
   <div className="event-item">
-    <div className="event-item__icon">
+    <div className="event-item__icon" data-animate="up">
       <SvgIcon name={iconName} />
     </div>
     <div className="event-item__texts">
       <InviteTitle main={title} background={background} />
-      <div className="event-item__place">{place}</div>
-      <div className="event-item__description">{description}</div>
-      <div className="event-item__date">{date}</div>
+      <div data-animate="in-place" className="event-item__place">
+        {place}
+      </div>
+      <div data-animate="in-place" className="event-item__description">
+        {description}
+      </div>
+      <div data-animate="in-place" className="event-item__date">
+        {date}
+      </div>
 
       {locationUrl && (
         <a
+          data-animate="down"
           href={locationUrl}
           target="_blank"
           rel="noopener noreferrer"
