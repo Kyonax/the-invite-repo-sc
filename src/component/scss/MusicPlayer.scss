@@ -1,0 +1,72 @@
+.music-player-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 1rem;
+  z-index: 9999;
+
+  .music-inline-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: rgba(244, 239, 233, 0.95);
+    border: 1px solid hsl(35, 40%, 70%);
+    border-radius: 2rem;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    max-width: 332px;
+    min-width: 3rem;
+    overflow: hidden;
+    transition:
+      max-width 0.4s ease,
+      padding 0.4s ease,
+      gap 0.3s ease;
+
+    .music-button {
+      all: unset;
+      cursor: pointer;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: hsl(91, 17%, 39%);
+      border: 1px solid hsl(91, 17%, 32%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: hsl(91, 17%, 29%);
+      }
+
+      .music-icon {
+        width: 1.2rem;
+        height: 1.2rem;
+        fill: hsl(35, 40%, 95%);
+      }
+    }
+
+    .music-message {
+      color: hsl(72, 46%, 16%);
+      font-size: 1rem;
+      white-space: nowrap;
+      transition:
+        opacity 0.3s ease,
+        transform 0.4s ease;
+      margin-left: 0.75rem;
+    }
+  }
+
+  .hide-message {
+    max-width: 3rem;
+    padding: 0.5rem;
+    padding-right: 0.15rem;
+    gap: 0;
+    overflow: hidden;
+
+    .music-message {
+      opacity: 0;
+      transform: translateX(-20px);
+      pointer-events: none;
+    }
+  }
+}

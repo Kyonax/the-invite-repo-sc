@@ -1,0 +1,43 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
+.invite-title {
+  opacity: 0;
+  color: var(--invite-title-color, var(--clr-primary-300));
+  position: relative;
+  font-size: var(--invite-font-small, var(--fs-400));
+  font-family: "EBGaramond";
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+
+  &__background {
+    font-family: "Astutely";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.3;
+    transform: translateY(-2.5rem);
+    text-align: center;
+
+    font-weight: 400;
+    font-size: var(--invite-font-large, clamp(1rem, 20vw, 8.8rem));
+    line-height: clamp(1rem, 20vw, 7rem);
+    color: transparent;
+    -webkit-text-stroke-width: var(--invite-stroke-back, 1px);
+    -webkit-text-stroke-color: var(
+      --invite-title-color,
+      var(--clr-primary-300)
+    );
+    -webkit-text-fill-color: transparent;
+  }
+
+  @include mixins.max-media-query(sm) {
+    .invite-title {
+      &__background {
+        transform: translateY(-1.5rem);
+      }
+    }
+  }
+}

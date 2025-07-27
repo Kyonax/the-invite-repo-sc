@@ -1,0 +1,41 @@
+.decoration-image {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  width: auto;
+  height: auto;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &.top-left {
+    top: 0;
+    left: 0;
+
+    transform: translate(-1rem, -6rem);
+  }
+
+  &.top-right {
+    top: 0;
+    right: 0;
+
+    transform: translate(1rem, -6rem);
+  }
+
+  &.bottom-left {
+    bottom: 0;
+    left: 0;
+
+    transform: translate(-1rem, 6rem);
+  }
+
+  &.bottom-right {
+    bottom: 0;
+    right: 0;
+
+    transform: translate(1rem, 6rem);
+  }
+}

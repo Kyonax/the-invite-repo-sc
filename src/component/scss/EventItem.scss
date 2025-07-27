@@ -1,0 +1,89 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
+.event-item {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--clr-primary-100);
+
+  &__icon {
+    opacity: 0;
+    margin-bottom: 2rem;
+
+    svg {
+      width: 6rem;
+      height: 6rem;
+      color: var(--clr-secondary-100);
+    }
+  }
+
+  &__place,
+  &__description,
+  &__date,
+  &__button {
+    opacity: 0;
+  }
+
+  &__place,
+  &__description {
+    font-size: var(--fs-200);
+  }
+
+  &__place {
+    font-weight: 600;
+    transform: translateY(-0.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  &__date {
+    font-size: var(--fs-200);
+    font-style: italic;
+    color: var(--clr-secondary-100);
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--clr-cream-brown-100);
+    border-radius: 6px;
+    font-size: var(--fs-200);
+    color: var(--clr-secondary-100);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+
+    &:hover {
+      background-color: var(--clr-cream-brown-100);
+    }
+  }
+
+  @include mixins.max-media-query(sm) {
+    margin-bottom: 3rem;
+
+    &__icon {
+      margin-bottom: 1.5rem;
+
+      svg {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+    }
+
+    &__place {
+      margin-bottom: 0rem;
+    }
+
+    &__date {
+      margin-bottom: 0.5rem;
+    }
+
+    &__button {
+      padding: 0.5rem 1rem;
+    }
+  }
+}
+
+.event-item:last-child {
+  margin-bottom: 0rem;
+}

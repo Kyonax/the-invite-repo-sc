@@ -1,0 +1,87 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
+.accommodation-item {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 4rem;
+  color: var(--clr-primary-100);
+
+  &__icon,
+  &__description,
+  &__contact {
+    opacity: 0;
+  }
+
+  &__icon {
+    margin-bottom: 1rem;
+
+    svg {
+      width: 6rem;
+      height: 6rem;
+      color: var(--clr-secondary-100);
+    }
+  }
+
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__description {
+    font-size: var(--fs-200);
+    line-height: var(--fs-300);
+    color: var(--clr-primary-100);
+    max-width: 30rem;
+  }
+
+  &__contact {
+    transform: translateY(1.5rem);
+    font-size: var(--fs-200);
+    color: var(--clr-cream-brown-300);
+
+    a {
+      text-decoration: none;
+      color: var(--clr-cream-brown-200);
+      margin-left: 0.5rem;
+
+      &:hover {
+        color: var(--clr-cream-brown-300);
+      }
+    }
+  }
+
+  .website {
+    transform: translateY(0.5rem);
+  }
+
+  &__price {
+    font-weight: bold;
+    font-size: var(--fs-300);
+    color: var(--clr-secondary-100);
+    margin-top: 0.75rem;
+  }
+
+  @include mixins.max-media-query(sm) {
+    margin-bottom: 3rem;
+
+    &__icon {
+      margin-bottom: 0.5rem;
+
+      svg {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+    }
+
+    &__contact {
+      transform: translateY(1rem);
+    }
+
+    .website {
+      transform: translateY(0rem);
+    }
+  }
+}

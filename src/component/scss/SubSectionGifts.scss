@@ -1,0 +1,33 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
+.gifts-section {
+  padding: 6rem 1rem;
+  text-align: center;
+  background-color: var(--clr-primary-100);
+  color: var(--clr-cream-brown-50);
+
+  .invite-title {
+    margin-bottom: 6rem;
+    text-align: center;
+    --invite-title-color: var(--clr-cream-brown-50);
+    --invite-stroke-back: 2px;
+  }
+
+  &__message {
+    opacity: 0;
+    font-size: var(--fs-200);
+    line-height: var(--fs-300);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @include mixins.max-media-query(sm) {
+    padding: 3rem 1rem;
+
+    .invite-title {
+      margin-bottom: 3rem;
+      --invite-stroke-back: 1px;
+    }
+  }
+}

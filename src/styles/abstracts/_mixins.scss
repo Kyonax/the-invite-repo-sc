@@ -1,0 +1,95 @@
+/**
+ * @file _mixins.scss - Mixins
+ *
+ * This file is dedicated to managing all the mixins for this
+ * project, ensuring reusable and consistent styling.
+ *
+ * node.js-v20.17.0
+ *
+ * @author Cristian Moreno (Kyonax)
+ * @contact iamkyo@kyo.wtf
+ * @date 2025-06-10
+ *
+ * Code Guidelines :: @CCSv0.1
+ * More details: https://code-guidelines.cybercodesyndicate.org
+ * - Tabs only—no spaces.
+ * - Naming:
+ *   - kebab-case for classes and file names (e.g., file-example.js).
+ *   - __underscore for childs (double underscore prefix).
+ * - Meaningful Names btn-default-class over classOne.
+ *
+ * Repository-URL
+ * https://github.com/Kyonax/the-invite-sc.git
+ *
+ * @dependencies
+ * - Using "sass:map";
+ * - Using "sass:math";
+ * - Using "sass:meta";
+ * - Using "sass:color";
+ * - Using "sass:string";
+ * - Using * from "variables"
+ *
+ * @usage
+ * UsageOfThisFile
+ */
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:color";
+@use "sass:string";
+@use "variables" as *;
+
+/**
+ * Font Face Mixin
+ *
+ * Creates a custom @font-face rule to use your own fonts.
+ * It's quick and to the point.
+ *
+ * @params
+ * $name - The font name.
+ * $path - Where the font file lives.
+ * $weight - Font weight (default: normal).
+ * $style - Font style (default: normal).
+ */
+@mixin font-face($name, $path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: "#{$name}";
+    src: url("@/assets/fonts/#{$path}.ttf") format("truetype");
+    font-weight: #{$weight};
+    font-style: #{$style};
+  }
+}
+
+/**
+ * Min Media Query Mixin
+ *
+ * Sets up a media query for when the screen is at least a
+ * certain size. Perfect for scaling up.
+ *
+ * @params
+ * $key - The size key from your $breakpoints map.
+ */
+@mixin min-media-query($key) {
+  $size: map.get($breakpoints, $key);
+
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+/**
+ * Max Media Query Mixin
+ *
+ * Sets up a media query for when the screen is at most a
+ * certain size. Handy for scaling down.
+ *
+ * @params
+ * $key - The size key from your $breakpoints map.
+ */
+@mixin max-media-query($key) {
+  $size: map.get($breakpoints, $key);
+
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}

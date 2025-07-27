@@ -1,0 +1,130 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
+.important-info-section {
+  padding: 6rem 1rem;
+  padding-top: 2rem;
+  text-align: left;
+
+  .invite-title {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  &__title,
+  &__text,
+  &__icon,
+  &__palette {
+    opacity: 0;
+  }
+
+  &__bento {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+
+  &__half {
+    width: 50%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    h3 {
+      margin: 0rem;
+      font-size: var(--fs-300);
+    }
+
+    @include mixins.max-media-query(md) {
+      width: 80%;
+    }
+  }
+
+  .bordered {
+  }
+
+  .bordered:first-child {
+    border-bottom: 0px;
+  }
+
+  &__text {
+    color: var(--clr-primary-100);
+    font-size: var(--fs-200);
+    line-height: var(--fs-300);
+    margin: 0rem;
+    transform: translateY(-2rem);
+  }
+
+  &__row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid var(--clr-primary-100);
+    width: 50%;
+    flex-shrink: 0;
+
+    svg {
+      width: 6rem;
+      height: auto;
+    }
+  }
+
+  &__palette {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &__circle {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background-color: var(--swatch-color);
+      border: 2px solid rgba(0, 0, 0, 0.05);
+    }
+
+    &__label {
+      font-size: var(--fs-100);
+      color: var(--clr-secondary-100);
+      font-weight: 500;
+      margin-top: 0.5rem;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+
+    @include mixins.max-media-query(sm) {
+      &__circle {
+        width: 1.9rem;
+        height: 1.9rem;
+      }
+    }
+  }
+
+  @include mixins.max-media-query(sm) {
+    padding: 3rem 1rem;
+    padding-top: 0rem;
+
+    &__icon {
+      svg {
+        width: 4rem;
+        height: auto;
+      }
+    }
+  }
+}

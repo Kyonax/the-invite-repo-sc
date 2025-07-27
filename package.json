@@ -2,15 +2,21 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
+		"convert-images": "node scripts/convert-to-webp.js",
+		"dev": "vite --host",
+		"build": "npm run convert-images && vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"fs": "^0.0.1-security",
+		"hersheytext": "^2.0.0",
+		"opentype.js": "^1.3.4",
 		"path": "^0.12.7",
 		"preact": "^10.25.3",
 		"preact-iso": "^2.9.2",
-		"preact-render-to-string": "^6.5.13"
+		"preact-render-to-string": "^6.5.13",
+		"preact-youtube": "^0.0.1",
+		"text-to-svg": "^3.1.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.27.4",
@@ -19,11 +25,15 @@
 		"@rollup/plugin-babel": "^6.0.4",
 		"eslint": "^8.57.1",
 		"eslint-config-preact": "^1.5.0",
+		"fast-glob": "^3.3.3",
 		"postcss": "^8.5.4",
 		"postcss-preset-env": "^10.2.2",
 		"sass": "^1.89.2",
+		"sharp": "^0.34.2",
 		"typescript": "^5.8.3",
-		"vite": "^6.0.4"
+		"vite": "^6.0.4",
+		"vite-imagetools": "^7.1.0",
+		"vite-plugin-svgr": "^4.3.0"
 	},
 	"eslintConfig": {
 		"extends": "preact"

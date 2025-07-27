@@ -1,0 +1,33 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
+.accommodations-section {
+  display: grid;
+  width: 98%;
+  padding: 3rem 1rem;
+  text-align: left;
+
+  .invite-title {
+    margin-bottom: 0rem;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: var(--fs-200);
+  }
+
+  @include mixins.max-media-query(sm) {
+    width: 92%;
+    padding: 2rem 1rem;
+
+    &__list {
+      gap: 1rem;
+    }
+  }
+}

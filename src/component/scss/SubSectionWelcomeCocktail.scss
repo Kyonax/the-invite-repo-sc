@@ -1,0 +1,92 @@
+@use "../../styles/abstracts/variables" as *;
+@use "../../styles/abstracts/mixins";
+
+.welcome-cocktail {
+  display: grid;
+  width: 98%;
+  padding: 3rem 1rem;
+  padding-top: 0rem;
+  text-align: left;
+
+  .invite-title {
+    margin-bottom: 0rem;
+    text-align: center;
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: var(--fs-200);
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+
+      .label {
+        font-family: "DMSerif";
+        font-size: var(--fs-400);
+        color: var(--clr-cream-brown-100);
+        font-weight: 500;
+      }
+
+      .value {
+        font-size: var(--fs-200);
+        font-weight: 300;
+
+        em {
+          font-style: italic;
+          color: var(--clr-cream-brown-200);
+        }
+      }
+    }
+  }
+
+  @include mixins.max-media-query(sm) {
+    width: 92%;
+    padding: 2rem 1rem;
+
+    &__table {
+      gap: 1rem;
+
+      .row {
+        .label {
+          font-size: var(--fs-300);
+        }
+
+        .value {
+          font-size: var(--fs-100);
+        }
+      }
+    }
+  }
+
+  &__dresscode {
+    max-width: 640px;
+    margin: 2rem auto 0;
+    font-size: var(--fs-200);
+
+    .label {
+      font-family: "DMSerif";
+      font-size: var(--fs-400);
+      color: var(--clr-cream-brown-100);
+      margin-bottom: 0.5rem;
+    }
+
+    .value {
+      font-size: var(--fs-200);
+      font-weight: 300;
+
+      em {
+        font-style: italic;
+        color: var(--clr-cream-brown-200);
+      }
+    }
+  }
+}
