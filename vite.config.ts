@@ -6,7 +6,7 @@ import { imagetools } from "vite-imagetools";
 import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  base: "/the-invite-repo-sc",
+  base: ".",
   plugins: [
     preact({
       prerender: {
