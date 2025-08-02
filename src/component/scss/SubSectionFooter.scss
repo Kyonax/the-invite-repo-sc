@@ -1,0 +1,17 @@
+.footer-section {
+  background-color: hsl(35, 30%, 95%);
+  padding: 1rem 1rem;
+  text-align: center;
+  font-size: var(--fs-100);
+  color: hsl(72, 46%, 16%);
+
+  a {
+    color: hsl(91, 17%, 39%);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
