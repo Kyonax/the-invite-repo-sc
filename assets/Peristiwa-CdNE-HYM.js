@@ -1,0 +1,1 @@
+const t="/assets/Peristiwa-C30X11rd.ttf";export{t as default};

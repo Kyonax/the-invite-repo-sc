@@ -1,0 +1,1 @@
+const t="/assets/DMSerifDisplay-Italic-BM7JSAow.ttf";export{t as default};

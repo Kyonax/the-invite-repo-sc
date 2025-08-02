@@ -1,0 +1,1 @@
+const a="/assets/DMSerifDisplay-Regular-CgbDHTYY.ttf";export{a as default};

@@ -1,0 +1,1 @@
+const a="/assets/EBGaramond-zWkz-3IV.ttf";export{a as default};

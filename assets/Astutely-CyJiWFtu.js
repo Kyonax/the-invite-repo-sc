@@ -1,0 +1,1 @@
+const t="/assets/Astutely-BM2d0emC.ttf";export{t as default};

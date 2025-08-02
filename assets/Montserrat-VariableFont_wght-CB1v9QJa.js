@@ -1,0 +1,1 @@
+const t="/assets/Montserrat-VariableFont_wght-CiIa1Ne8.ttf";export{t as default};
