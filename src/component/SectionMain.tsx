@@ -1,5 +1,3 @@
-import BlastImage from "./BlastImage";
-
 import SubSectionCover from "./SubSectionCover";
 import SubSectionIntro from "./SubSectionIntro";
 import SubSectionCountdown from "./SubSectionCountdown";
@@ -11,6 +9,7 @@ import SubSectionGifts from "./SubSectionGifts";
 import SubSectionExtendedTrip from "./SubSectionExtendedTrip";
 import SubSectionGallery from "./SubSectionGallery";
 import SubSectionRSVP from "./SubSectionRSVP";
+import SubSectionFooter from "./SubSectionFooter";
 
 type SectionMainProps = {
   isTop: boolean;
@@ -31,6 +30,7 @@ const SectionMain = ({ isTop, handleSealClick }: SectionMainProps) => {
       <SubSectionGifts />
       <SubSectionExtendedTrip />
       <SubSectionRSVP />
+      <SubSectionFooter />
     </section>
   );
 };
