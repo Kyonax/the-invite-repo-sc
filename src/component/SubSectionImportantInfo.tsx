@@ -9,6 +9,7 @@ const COLORS_WOMEN_EXCLUDED = [
   { name: "Beige", hex: "#E8D9B0" },
   { name: "Rust", hex: "#7E3717" },
   { name: "Terracota", hex: "#D9A48F" },
+  { name: "Cabernet", hex: "#4D0F28" },
 ];
 
 const ColorSwatchCircle = ({ name, hex }: { name: string; hex: string }) => (
@@ -34,8 +35,8 @@ const SubSectionImportantInfo = () => {
             Caballeros
           </h3>
           <p data-animate="in-place" className="important-info-section__text">
-            El color mostrado ha sido reservado exclusivamente para el novio.
-            Evitar cualquier tonalidad relacionada.
+            Color reservado para el novio: Se recomienda evitar cualquier
+            tonalidad relacionada.
           </p>
           <div className="important-info-section__row">
             <div
@@ -60,8 +61,8 @@ const SubSectionImportantInfo = () => {
             Damas
           </h3>
           <p data-animate="in-place" className="important-info-section__text">
-            Los colores exhibidos están destinados a la novia y sus damas de
-            compañía. Evitar cualquier tonalidad relacionada.
+            Colores reservados para la novia: Agradecemos evitar tonos
+            similares.
           </p>
           <div className="important-info-section__row">
             <div

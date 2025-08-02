@@ -1,9 +1,14 @@
 import AccommodationItem from "./AccommodationItem";
+import InviteTitle from "./InviteTitle";
 import "./scss/SubSectionAccommodations.scss";
 
 const SubSectionAccommodations = () => {
   return (
     <section className="accommodations-section">
+      <div class="accommodations-section__title">
+        <InviteTitle main="Información Importante" background="Important" />
+      </div>
+
       <AccommodationItem
         iconName="SvgHotel"
         name="Hotel Parature"

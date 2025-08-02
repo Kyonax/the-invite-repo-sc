@@ -3,9 +3,13 @@
 
 .accommodations-section {
   display: grid;
-  width: 98%;
+  width: 100%;
   padding: 3rem 1rem;
   text-align: left;
+
+  &__title {
+    margin-bottom: 9rem;
+  }
 
   .invite-title {
     margin-bottom: 0rem;
@@ -23,7 +27,6 @@
   }
 
   @include mixins.max-media-query(sm) {
-    width: 92%;
     padding: 2rem 1rem;
 
     &__list {
