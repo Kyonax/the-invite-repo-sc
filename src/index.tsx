@@ -1,16 +1,18 @@
 import { hydrate, prerender as ssr } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
 import { preloadImages, GLOBAL_IMAGE_CACHE } from "./util/preload-images.util";
+import { preloadFonts } from "./util/preload-fonts.util";
+import { preloadMedia, getMediaFileCount } from "./util/preload-media.util";
 import { setupFadeInOnScroll } from "./util/setup-fade-in.util";
 
 import Preloader from "./component/Preloader";
 import SectionEnvelope from "./component/SectionEnvelope";
 import SectionMain from "./component/SectionMain";
+import MusicPlayer from "./component/MusicPlayer";
+import ReloadButton from "./component/ReloadButton";
 
 import data from "./data/families-invited.json";
 import "./styles/main.scss";
-import MusicPlayer from "./component/MusicPlayer";
-import ReloadButton from "./component/ReloadButton";
 
 // List of critical images to preload
 const CRITICAL_IMAGES = [
@@ -41,14 +43,12 @@ const CRITICAL_IMAGES = [
   "IMG_8263",
 ];
 
-// ✅ FIX: Encode image URLs before using in CSS
 export const injectImageUrlsToCSS = (cache) => {
   const style = document.createElement("style");
 
   const rules = Object.entries(cache.urls)
     .filter(([_, url]) => typeof url === "string" && url.length > 0)
     .map(([id, url]) => {
-      // Encode characters that may break CSS
       const safeUrl = encodeURI(url).replace(/'/g, "\\'");
       return `--img-${id}: url('${safeUrl}');`;
     })
@@ -62,6 +62,7 @@ export function App({ data }) {
   const [loaded, setLoaded] = useState(false);
   const [isTop, setIsTop] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [totalAssets, setTotalAssets] = useState(null);
 
   const handleSealClick = () => {
     setIsTop((prev) => !prev);
@@ -72,21 +73,34 @@ export function App({ data }) {
   }, []);
 
   useEffect(() => {
-    const loadCriticalImages = async () => {
+    const loadCriticalAssets = async () => {
+      const mediaCount = await getMediaFileCount();
+      const TOTAL_ASSETS =
+        CRITICAL_IMAGES.length + 2 /* font files */ + mediaCount;
+      setTotalAssets(TOTAL_ASSETS);
+
       await preloadImages(
         CRITICAL_IMAGES,
         GLOBAL_IMAGE_CACHE,
         (loaded, total) => {
-          const percentage = Math.round((loaded / total) * 100);
+          const percentage = Math.round(((loaded + 0) / TOTAL_ASSETS) * 100);
           setProgress(percentage);
         },
       );
 
-      injectImageUrlsToCSS(GLOBAL_IMAGE_CACHE); // ✅ Safe inject
+      await preloadFonts(() => {
+        setProgress((prev) => Math.min(100, prev + (1 / TOTAL_ASSETS) * 100));
+      });
+
+      await preloadMedia(() => {
+        setProgress((prev) => Math.min(100, prev + (1 / TOTAL_ASSETS) * 100));
+      });
+
+      injectImageUrlsToCSS(GLOBAL_IMAGE_CACHE);
       setLoaded(true);
     };
 
-    loadCriticalImages();
+    loadCriticalAssets();
   }, []);
 
   const dotPosition = (progress / 100) * 180;

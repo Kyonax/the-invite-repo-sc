@@ -10,7 +10,10 @@ const Preloader = ({ progress, dotPosition }: PreloaderProps) => {
     <div class="preloader-screen">
       <div class="preloader-animation">
         <div class="loading-bar">
-          <div class="progress-fill" style={{ width: `${progress}%` }}>
+          <div
+            class="progress-fill"
+            style={{ width: `${progress.toFixed(1)}%` }}
+          >
             <SvgProgress dotPosition={dotPosition} />
           </div>
         </div>
