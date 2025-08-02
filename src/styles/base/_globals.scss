@@ -256,6 +256,13 @@ body {
     }
   }
 
+  .seal-button {
+    all: unset;
+    display: block;
+    cursor: pointer;
+    width: fit-content;
+  }
+
   .seal {
     display: block;
     position: absolute;
