@@ -103,8 +103,8 @@ export function App({ data }) {
             handleSealClick={handleSealClick}
           />
           <SectionMain isTop={isTop} handleSealClick={handleSealClick} />
-          <MusicPlayer />
           <div class={`main-reload ${isTop ? "visible" : ""}`}>
+            <MusicPlayer />
             <ReloadButton />
           </div>
         </>

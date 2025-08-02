@@ -3,7 +3,7 @@
 
 .welcome-cocktail {
   display: grid;
-  width: 98%;
+  width: 100%;
   padding: 3rem 1rem;
   padding-top: 0rem;
   text-align: left;
@@ -49,7 +49,6 @@
   }
 
   @include mixins.max-media-query(sm) {
-    width: 92%;
     padding: 2rem 1rem;
 
     &__table {

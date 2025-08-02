@@ -57,8 +57,7 @@
 
 *,
 ::before,
-::af          // Update progress percentage
-ter {
+::after {
   box-sizing: border-box;
 }
 
@@ -540,11 +539,29 @@ body {
     justify-items: center;
 
     .invite-title {
-      transform: translateY(-1rem);
+      transform: translateY(-3rem);
 
       &__background {
-        transform: translateY(-1.5rem);
+        transform: translateY(3rem);
+        opacity: 1;
+        --invite-title-color: var(--clr-primary-500);
       }
+    }
+
+    &__place,
+    &__date {
+      opacity: 0;
+    }
+
+    &__date {
+      font-size: var(--fs-400);
+      position: absolute;
+      transform: translateY(5rem);
+      width: max-content;
+      left: 0;
+      right: 0;
+      margin: auto;
+      color: var(--clr-primary-500);
     }
 
     picture {
@@ -558,13 +575,24 @@ body {
         display: block;
         position: relative;
         margin-top: 3rem;
-        z-index: 1;
+        z-index: 0;
       }
     }
 
     @include mixins.max-media-query(sm) {
       .invite-title {
+        height: max-content;
         transform: translateY(-3rem);
+
+        &__background {
+          transform: translateY(1.5rem);
+          opacity: 1;
+          --invite-title-color: var(--clr-primary-500);
+        }
+      }
+
+      &__date {
+        transform: translateY(1.5rem);
       }
     }
   }
@@ -581,6 +609,12 @@ body {
     margin: 0rem 0rem;
     margin-top: 4rem;
 
+    &__place {
+      margin: 0;
+      color: var(--clr-secondary-100);
+      font-size: var(--fs-400);
+    }
+
     p {
       max-width: 650px;
     }
@@ -589,7 +623,7 @@ body {
       opacity: 0;
       font-style: italic;
       margin: 6rem 0rem;
-      margin-top: 3rem;
+      margin-top: 1rem;
     }
 
     .blessing-parents {
