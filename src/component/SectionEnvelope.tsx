@@ -45,13 +45,18 @@ const SectionEnvelope = ({
             </text>
           </svg>
         </a>
-        <BlastImage
-          img="the_invite_seal_sc"
-          className="seal-image"
-          alt="The Invite Seal - S&C"
-          fetchpriority="high"
+        <button
           onClick={handleSealClick}
-        />
+          className="seal-button"
+          aria-label="Abrir sello" // <-- for accessibility
+        >
+          <BlastImage
+            img="the_invite_seal_sc"
+            className="seal-image"
+            alt="The Invite Seal - S&C"
+            fetchpriority="high"
+          />
+        </button>
       </div>
       <div class="double_border"></div>
       <div class="deep_border"></div>
