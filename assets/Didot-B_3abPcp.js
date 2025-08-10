@@ -1,0 +1,1 @@
+const t="/assets/Didot-DyP3VuR0.ttf";export{t as default};
