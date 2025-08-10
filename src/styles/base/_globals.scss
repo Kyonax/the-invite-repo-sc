@@ -545,6 +545,17 @@ body {
     display: grid;
     justify-items: center;
 
+    .typo-test {
+      display: grid;
+      text-align: center;
+      font-family: Didot;
+      gap: 0.5rem;
+
+      span {
+        display: block;
+      }
+    }
+
     .invite-title {
       transform: translateY(-3rem);
 
@@ -562,8 +573,6 @@ body {
 
     &__date {
       font-size: var(--fs-400);
-      position: absolute;
-      transform: translateY(5rem);
       width: max-content;
       left: 0;
       right: 0;
@@ -600,6 +609,10 @@ body {
 
       &__date {
         transform: translateY(1.5rem);
+      }
+
+      picture {
+        margin-top: 1.5rem;
       }
     }
   }
@@ -826,17 +839,103 @@ body {
 
   .cover-names {
     position: absolute;
-    margin-top: 4rem;
     top: 0;
+    margin-top: 4rem;
     width: 90%;
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    z-index: 2; // keep above image
 
-    .invite-title {
-      --invite-stroke-back: 1.5px;
+    &__subtitle {
+      font-family: Peristiwa, Astutely, "DMSerif", "EBGaramond", "Didot", serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: var(--fs-400);
+      letter-spacing: 0.06em;
+      color: var(--clr-secondary-100);
+      margin: 0;
+      opacity: 0.95;
+      transform-origin: center;
+
+      transition:
+        transform 0.45s ease,
+        opacity 0.45s ease;
+    }
+
+    // big couple names
+    &__couple {
+      margin: 0;
+      display: grid;
+      gap: 0.25rem; // vertical spacing between lines
+      align-items: center;
+      justify-items: center;
+
+      font-family: "Didot", "EBGaramond", Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: clamp(var(--fs-700), 8.5vw, var(--fs-900));
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      color: var(--clr-cream-brown-50);
+      margin: 0;
+      margin-top: 1rem;
+      /* Enhanced text shadow */
+      text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.06),
+        0 6px 12px rgba(0, 0, 0, 0.1);
+
+      -webkit-font-smoothing: antialiased;
+      transform-origin: center;
+      transition:
+        transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 0.45s ease;
+    }
+
+    // each word on its own line
+    &__word {
+      display: block;
+      // keep each word tight
+      padding: 0;
+      margin: 0;
+    }
+
+    // the ampersand gets a slightly different scale and vertical align
+    &__sep {
+      display: block;
+      font-family: "Didot", "EBGaramond", serif;
+      font-size: 0.7em; // slightly smaller than the names
+      opacity: 0.9;
+      transform: translateY(-0.15rem);
+      letter-spacing: 0;
+    }
+
+    // date
+    &__date {
+      font-size: var(--fs-400);
+      color: var(--clr-secondary-100);
+      margin-top: 0.6rem;
+      width: max-content;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.95;
     }
 
     @include mixins.max-media-query(sm) {
-      .invite-title {
-        --invite-stroke-back: 1px;
+      margin-top: 1.2rem;
+      &__subtitle {
+        font-size: var(--fs-400);
+      }
+      &__couple {
+        font-size: clamp(var(--fs-500), 12vw, var(--fs-800));
+        letter-spacing: 0.06em;
+      }
+      &__date {
+        font-size: var(--fs-300);
       }
     }
   }
