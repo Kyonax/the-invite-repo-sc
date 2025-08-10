@@ -34,7 +34,7 @@ export default function CountdownBogota() {
     const event = {
       title: "Nos Casamos - Sofía & Cristhian",
       description: "No Olvides en apartar la Fecha, te esperamos!",
-      location: "Bogotá, Colombia",
+      location: "Inírida, Guainía",
       start: targetDate,
       end: new Date(targetDate.getTime() + 2 * 60 * 60 * 1000), // +2 hours
     };

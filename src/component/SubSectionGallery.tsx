@@ -27,7 +27,7 @@ const images = [
   "IMG_8263",
 ];
 
-const midpoint = Math.floor(images.length / 2);
+const midpoint = Math.floor(images.length / 10);
 const galleryItems = [
   ...images.slice(0, midpoint).map((img) => ({ type: "image", src: img })),
   { type: "video", src: weddingVideo },

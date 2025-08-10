@@ -18,13 +18,13 @@ const SubSectionIntro = () => {
       <div class="blessing-parents">
         <div data-animate="left" class="parents" style="text-align: left;">
           <span class="parents__from">Padres de la Novia</span>
-          <span>Nelson Ramírez</span>
-          <span>Yolima Cruz</span>
+          <span>Nelson O Ramírez A.</span>
+          <span>Yolima R Cruz V.</span>
         </div>
         <div data-animate="right" class="parents" style="text-align: right;">
           <span class="parents__from">Padres del Novio</span>
-          <span>Manuel Tapia</span>
-          <span>Gladys Páez</span>
+          <span>Manuel G Tapia Q.</span>
+          <span>Gladys Páez Q.</span>
         </div>
       </div>
     </div>

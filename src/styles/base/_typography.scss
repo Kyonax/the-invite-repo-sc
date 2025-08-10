@@ -39,6 +39,7 @@
 @include mixins.font-face("DMSerif", "DMSerifDisplay-Italic", 400, Italic);
 @include mixins.font-face("EBGaramond", "EBGaramond", 400, normal);
 @include mixins.font-face("EBGaramond", "EBGaramond-Italic", 400, Italic);
+@include mixins.font-face("Didot", "Didot", 400, Regular);
 
 // Global typography settings
 html {
