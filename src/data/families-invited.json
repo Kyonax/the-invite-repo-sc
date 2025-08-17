@@ -1,5 +1,5 @@
 {
-  "fam000": { "text": "Familia Galvis Gonzales", "reserved": 3, "baby": true },
+  "fam000": { "text": "Familia Galvis Gonzales", "reserved": 2, "baby": true },
   "fam001": { "text": "Familia Ayala Galán", "reserved": 2 },
   "fam002": { "text": "Familia Lara Carrillo", "reserved": 2 },
   "fam003": { "text": "Miguel Angel Uribe", "reserved": 1 },
@@ -32,7 +32,7 @@
   "fam030": { "text": "Sara Chaparro Ramírez", "reserved": 1 },
   "fam031": { "text": "Carlos Gomez", "reserved": 1 },
   "fam032": { "text": "Carolina Ramírez", "reserved": 1 },
-  "fam033": { "text": "Familia Moreno Cruz", "reserved": 3, "baby": true },
+  "fam033": { "text": "Familia Moreno Cruz", "reserved": 2, "baby": true },
   "fam034": { "text": "Robinson Zabala Zabala", "reserved": 1 },
   "fam035": { "text": "Familia Ramírez Cruz", "reserved": 3 }
 }

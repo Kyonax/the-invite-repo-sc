@@ -4,9 +4,9 @@ const SubSectionIntro = () => {
   return (
     <div class="second-section">
       <p class="wedding-phrase" data-animate="in-place">
-        Donde el río abraza la selva, floreció nuestro amor. Hoy, en el corazón
-        de nuestro hogar, celebramos lo que la vida tejió con paciencia.
-        Queremos que vengas a celebrar esta historia que apenas comienza.
+        Hoy, en el corazón de nuestro hogar, celebramos lo que la vida tejió con
+        paciencia. Queremos que vengas a celebrar esta historia que apenas
+        comienza.
       </p>
 
       <InviteTitle
