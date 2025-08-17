@@ -2,7 +2,7 @@ import InviteTitle from "./InviteTitle";
 import SvgIcon from "./SvgIcon";
 import "./scss/SubSectionImportantInfo.scss";
 
-const COLORS_MEN_EXCLUDED = [{ name: "Verde Oliva", hex: "#808000" }];
+const COLORS_MEN_EXCLUDED = [{ name: "Verde", hex: "#808000" }];
 
 const COLORS_WOMEN_EXCLUDED = [
   { name: "Blanco", hex: "#FFFFFF" },

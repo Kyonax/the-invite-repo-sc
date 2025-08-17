@@ -540,6 +540,23 @@ body {
     transform: translateY(0) !important;
   }
 
+  .nos-casamos {
+    opacity: 0;
+    width: 100%;
+    margin: 9rem 0rem;
+    margin-bottom: -0.5rem;
+
+    .invite-title {
+      color: var(--clr-primary-100);
+      --invite-font-large: var(--fs-700);
+    }
+
+    @include mixins.max-media-query(sm) {
+      margin: 3rem 0rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
   .first-section {
     position: relative;
     display: grid;
@@ -873,17 +890,17 @@ body {
       justify-items: center;
 
       font-family: "Didot", "EBGaramond", Georgia, "Times New Roman", serif;
-      font-weight: 600;
+      font-weight: 100;
       text-transform: uppercase;
       font-size: clamp(var(--fs-700), 8.5vw, var(--fs-900));
       line-height: 0.9;
       letter-spacing: 0.08em;
-      color: var(--clr-cream-brown-50);
+      color: var(--clr-primary-500);
       margin: 0;
       margin-top: 1rem;
       /* Enhanced text shadow */
       text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.1),
         0 4px 8px rgba(0, 0, 0, 0.06),
         0 6px 12px rgba(0, 0, 0, 0.1);
 
@@ -930,11 +947,14 @@ body {
       &__subtitle {
         font-size: var(--fs-400);
       }
+
       &__couple {
-        font-size: clamp(var(--fs-500), 12vw, var(--fs-800));
+        font-size: clamp(var(--fs-500), 12vw, var(--fs-700));
         letter-spacing: 0.06em;
       }
+
       &__date {
+        margin-top: 0.8rem;
         font-size: var(--fs-300);
       }
     }

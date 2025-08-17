@@ -13,7 +13,7 @@ const SubSectionAccommodations = () => {
         iconName="SvgHotel"
         name="Hotel Parature"
         background="Parature"
-        description="A orillas del río Inírida, habitaciones con vista"
+        description="A orillas del río Inírida, habitaciones con vista al río"
         phone="3102590686"
         web="https://www.tripadvisor.co/Hotel_Review-g3493976-d13535853-Reviews-Hotel_Parature-Inirida_Guainia_Department.html?m=19905"
       />
