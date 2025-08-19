@@ -10,6 +10,7 @@ interface TimelineEvent {
 
 const leftEvents: TimelineEvent[] = [
   { time: "", title: "", icon: "" },
+  { time: "15:30", title: "Recepción", icon: "SvgArcDoor" },
   { time: "", title: "", icon: "" },
   { time: "17:00", title: "fotos", icon: "SvgCamera" },
   { time: "", title: "", icon: "" },
@@ -22,7 +23,7 @@ const leftEvents: TimelineEvent[] = [
 ];
 
 const rightEvents: TimelineEvent[] = [
-  { time: "15:30", title: "Ceremonia de boda", icon: "SvgWeddingCeremony" },
+  { time: "16:00", title: "Ceremonia", icon: "SvgWeddingCeremony" },
   { time: "", title: "", icon: "" },
   { time: "18:30", title: "Banquete de boda", icon: "SvgLunch" },
   { time: "", title: "", icon: "" },
